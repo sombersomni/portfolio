@@ -5,7 +5,7 @@ import hihoLogo from '../imgs/hiho-logo.png';
 
 const SlideContainer = styled.div`
     width: 100vw;
-    background: #999;
+    margin: 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -15,7 +15,6 @@ const SlideContainer = styled.div`
 
 const LogoSliderContainer = styled.div`
     width: 80%;
-    background: blue;
 `;
 
 const brandLogos = [cutLogo, hihoLogo];

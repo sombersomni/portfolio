@@ -15,6 +15,7 @@ const HomeContainer = styled.div`
 const FeatureContainer = styled.div`
     width: 100vw;
     height: 100vh;
+    background: #222;
 `;
 export default function Home() {
     return (

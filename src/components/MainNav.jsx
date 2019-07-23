@@ -12,8 +12,6 @@ const NavContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: white;
-
 `;
 
 const HeaderContainer = styled.div`
@@ -24,8 +22,11 @@ const HeaderContainer = styled.div`
   position: fixed;
   text-align: center;
   justify-content: center;
+  margin: 0;
+  height: 80px;
   z-index: 99;
 `;
+
 export default function MainNav() {
   return (
     <HeaderContainer>
