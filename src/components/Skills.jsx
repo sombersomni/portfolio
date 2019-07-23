@@ -8,11 +8,17 @@ const SkillContainer = styled.div`
     height: 90vh;
     background: #CCC;
 `;
+
+const skill = {
+    title: 'UI/UX Developer',
+    icon: 'laptop-code',
+
+}
 export default function Skills() {
     return (
         <SkillContainer>
             <SkillNav />
-            <SkillFeature />
+            <SkillFeature {...skill} />
         </SkillContainer>
     )
 }

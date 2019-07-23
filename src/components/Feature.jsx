@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SocialButton from './SocialButton.jsx';
 
 const FeatureContainer = styled.div`
-    width: 280px;
+    width: 250px;
     padding: 25px;
     background: red;
     position: absolute;
     border-radius: 10%;
     top: 50%;
-    left: 55%;
+    left: 50%;
     margin-top: 50px;
     transform: translate(-50%,-50%);
     z-index: 10;

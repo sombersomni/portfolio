@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home.jsx'
 import MainNav from './components/MainNav.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt } from '@fortawesome/pro-regular-svg-icons'
+import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode} from '@fortawesome/pro-regular-svg-icons'
 import { faFilePdf } from '@fortawesome/pro-light-svg-icons'
 import { faGithub, faVimeoV } from '@fortawesome/free-brands-svg-icons';
 // import logo from './logo.svg';
@@ -16,6 +16,7 @@ library.add(
   faHomeAlt, 
   faGithub,
   faVimeoV,
+  faLaptopCode,
   faFilePdf);
 
 function App() {

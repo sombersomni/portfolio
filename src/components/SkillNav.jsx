@@ -4,12 +4,11 @@ import styled from 'styled-components';
 import Capsule from './Capsule.jsx';
 
 const SkillNavContainer = styled.div`
-    width: 80vw;
+    width: 100vw;
     background: white;
     display: flex;
     flex-direction: row;
-    jusity-content: center;
-
+    justify-content: center;
 `;
 
 const skills = ['ui/ux developer', 'backend developer', 'data science', 'animation']
@@ -19,6 +18,7 @@ export default function SkillNav() {
             <SkillNavContainer>
                 {skills.map(skill => <Capsule key={skill} label={skill} />)}
             </SkillNavContainer>
+            
         </div>
     )
 }

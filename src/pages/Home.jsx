@@ -9,13 +9,19 @@ import Skills from '../components/Skills.jsx';
 const HomeContainer = styled.div`
     width: 100vw;
     height: 100vh;
+    margin: 0px;
+`;
+
+const FeatureContainer = styled.div`
+    width: 100vw;
+    height: 100vh;
 `;
 export default function Home() {
     return (
         <HomeContainer>
-          <div style={{ width: '100vw', height: '100vh'}}>
+          <FeatureContainer>
             <Feature />
-          </div>
+          </FeatureContainer>
           <Skills />
           <LogoSlider />
         </HomeContainer>
