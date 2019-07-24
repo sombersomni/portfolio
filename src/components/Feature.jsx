@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //components
 import SocialButton from './SocialButton.jsx';
+import ContactModal from './ContactModal.jsx';
 
 const FeatureContainer = styled.div`
     width: 250px;
@@ -24,7 +25,7 @@ const FeatureButton = styled.button`
     background: white;
     color: #666;
     border: none;
-    margin: 10px;
+    margin: 10px 5px;
 `;
 
 const SocialContainer = styled.div`
@@ -40,23 +41,28 @@ const Resume = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    transition: opacity 1s;
+    opacity: 1;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+    }
 `;
 
 const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    &:hover {
-        cursor: pointer;
-    }
 `;
 const socialLinks = [
     { name: 'github', link: 'https://github.com/somberSomni' },
     { name: 'vimeo-v', link: 'https://vimeo.com/kartune' }];
 
 export default function Feature() {
+    const [open, setOpen] = useState(false);
     return (
         <FeatureContainer>
+            <ContactModal setOpen={setOpen} open={open} />
             <div>
                 <h3>
                     Somber
@@ -65,13 +71,16 @@ export default function Feature() {
                 </h3>
                 <p>A self taught programmer, artist and mathematician</p>
                 <ButtonContainer>
-                    <FeatureButton>
+                    <FeatureButton onClick={() => { setOpen(true) }}>
                         Hire Me
-                </FeatureButton>
-                    <Resume>
-                        <FontAwesomeIcon size='2x' icon={['fal', 'file-pdf']} />
-                        <p style={{ fontSize: '0.8em' }}>Download Resume PDF</p>
-                    </Resume>
+                    </FeatureButton>
+                    <a href="#">
+                        <Resume>
+                            <FontAwesomeIcon size='2x' icon={['fal', 'file-pdf']} />
+                            <p style={{ fontSize: '0.8em' }}>Download Resume PDF</p>
+                        </Resume>
+                    </a>
+
                 </ButtonContainer>
                 <SocialContainer>
                     {socialLinks.map(social =>

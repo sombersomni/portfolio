@@ -36,7 +36,7 @@ export default function SkillFeature({ title, icon, description, skillsets }) {
             <h1>{title}</h1>
             <FontAwesomeIcon size='8x' icon={['far', icon]} />
             <SkillSets>
-                {skillsets.map(skill => <Capsule label={skill} />)}
+                {skillsets.map(skill => <Capsule key={skill} label={skill} show={true}/>)}
             </SkillSets>
             <Description>{description}</Description>
         </SkillFeatureContainer>

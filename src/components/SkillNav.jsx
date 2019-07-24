@@ -16,7 +16,7 @@ const skills = ['ui/ux developer', 'backend developer', 'data science', 'animati
 export default function SkillNav() {
     return (
         <SkillNavContainer>
-            {skills.map(skill => <Capsule key={skill} label={skill} />)}
+            {skills.map(skill => <Capsule key={skill} label={skill} show={false}/>)}
         </SkillNavContainer>
     )
 }
