@@ -21,7 +21,7 @@ const brandLogos = [cutLogo, hihoLogo];
 export default function LogoSlider() {
     return (
         <SlideContainer>
-            <h3>Brands I've Worked with</h3>
+            <h4>Brands I've Worked with</h4>
             <LogoSliderContainer>
                 {brandLogos.map(brand => 
                 <img 

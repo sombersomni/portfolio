@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -21,11 +21,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function EmailForm() {
     const classes = useStyles();
+    const inputRef = useRef(null);
     const [values, setValues] = useState({
         email: '',
         name: '',
         message: ''
     });
+    useEffect(() => {
+        inputRef.current.focus();
+    }, [])
     return (
         <React.Fragment>
             <h2>
@@ -36,6 +40,7 @@ export default function EmailForm() {
             </h5>
             <form className={classes.container} noValidate autoComplete="off">
                 <TextField
+                    inputRef={inputRef}
                     label="Email"
                     value={values.email}
                     onChange={e => { setValues({ ...values, name: e.target.value }) }}
