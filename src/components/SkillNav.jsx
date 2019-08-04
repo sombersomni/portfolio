@@ -12,10 +12,10 @@ const SkillNavContainer = styled.div`
     padding-top: 50px;
 `;
 
-export default function SkillNav({setChoice, choice, skills}) {
+export default function SkillNav({setChoice, choice, skills, theme}) {
     return (
             <SkillNavContainer>
-                {skills.map((skill, i) => <Capsule key={skill + i} label={skill} show={false} setChoice={() => {setChoice(i)}} selected={i === choice}/>)}
+                {skills.map((skill, i) => <Capsule theme={theme} key={skill + i} label={skill} show={false} setChoice={() => {setChoice(i)}} selected={i === choice}/>)}
             </SkillNavContainer>
     )
 }

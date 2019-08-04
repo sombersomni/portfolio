@@ -15,20 +15,26 @@ const DefaultContainer = styled.div`
     font-size: 0.8em;
 `;
 
-export default function Capsule({ label, show, setChoice, selected }) {
-    const CapsuleContainer = styled.div`
-        ${defaultStyle}
-        background: ${selected ? '#666' : 'rgba(0,0,0,0)'};
-        cursor: pointer;
-        &:hover {
-            background: #666;
-        }
-    `;
+const CapsuleContainer = styled.div`
+    ${defaultStyle}
+    background: ${props => props.selected ? props.primaryColor : 'yellow'};
+    cursor: pointer;
+    &:hover {
+        background: ${props => props.secondColor};
+    }
+`;
+export default function Capsule({ label, show, setChoice, selected, theme }) {
 
     return (
         <div>
             {show ? <DefaultContainer> {label} </DefaultContainer> :
-                <CapsuleContainer onClick={setChoice}> {label} </CapsuleContainer>}
+                <CapsuleContainer
+                    selected={selected}
+                    primaryColor={theme[0]}
+                    secondColor={theme[4]}
+                    onClick={setChoice}>
+                    {label}
+                </CapsuleContainer>}
         </div>
     );
 }

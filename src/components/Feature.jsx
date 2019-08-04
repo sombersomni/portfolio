@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //components
 import SocialButton from './SocialButton.jsx';
 import ContactModal from './ContactModal.jsx';
-
+//other
+import socials from '../config/socials';
+const {socialLinks, SocialContainer} = socials;
 const FeatureContainer = styled.div`
     width: 250px;
     padding: 25px;
@@ -28,13 +31,6 @@ const FeatureButton = styled.button`
     margin: 10px 5px;
 `;
 
-const SocialContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-`;
-
 const Resume = styled.div`
     width: 100px;
     display: flex;
@@ -54,11 +50,8 @@ const ButtonContainer = styled.div`
     flex-direction: row;
     justify-content: center;
 `;
-const socialLinks = [
-    { name: 'github', link: 'https://github.com/somberSomni' },
-    { name: 'vimeo-v', link: 'https://vimeo.com/kartune' }];
 
-export default function Feature() {
+function Feature({theme}) {
     const [open, setOpen] = useState(false);
     return (
         <FeatureContainer>
@@ -85,6 +78,7 @@ export default function Feature() {
                 <SocialContainer>
                     {socialLinks.map(social =>
                         <SocialButton
+                            theme={theme}
                             key={social.name}
                             social={social.name}
                             link={social.link} />)}
@@ -93,3 +87,9 @@ export default function Feature() {
         </FeatureContainer>
     );
 }
+function mapStateToProps({theme}) {
+    return {
+        theme
+    }
+}
+export default connect(mapStateToProps)(Feature)

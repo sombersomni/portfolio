@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { debounce } from 'lodash';
 //components
 import Home from './pages/Home.jsx'
 import MainNav from './components/MainNav.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode, faTimes, faServer, faDatabase, faPlus, faBrain, faChartPie } from '@fortawesome/pro-regular-svg-icons'
-import { faFilePdf, faChartScatter,  faHorizontalRule, faProjectDiagram } from '@fortawesome/pro-light-svg-icons'
+import { faFilePdf, faChartScatter, faHorizontalRule, faProjectDiagram } from '@fortawesome/pro-light-svg-icons'
 import { faGithub, faVimeoV } from '@fortawesome/free-brands-svg-icons';
 // import logo from './logo.svg';
 import './App.css';
@@ -28,7 +30,13 @@ library.add(
   faPlus,
   faFilePdf);
 
-function App() {
+function App({dResizeTracker}) {
+  useEffect(() => {
+    window.addEventListener('resize', dResizeTracker);
+    return () => {
+      window.removeEventListener('resize', dResizeTracker)
+    }
+  }, [])
   return (
     <div className='App'>
       <Router>
@@ -44,4 +52,19 @@ function App() {
   );
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  function resizeTracker(e) {
+    console.log(e.target.innerWidth);
+    const { innerWidth } = e.target || window
+    if (innerWidth <= 600) {
+      dispatch({ type: 'UPDATE_MOBILE', payload: true })
+    } else {
+      dispatch({ type: 'UPDATE_MOBILE', payload: false })
+    }
+  }
+  const dResizeTracker = debounce(resizeTracker, 100);
+  return {
+    dResizeTracker
+  }
+}
+export default connect(null,mapDispatchToProps)(App);

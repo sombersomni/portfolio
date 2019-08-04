@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { connect } from 'react-redux';
 import SkillNav from './SkillNav.jsx';
 import SkillFeature from './SkillFeature.jsx';
 import styled from 'styled-components';
@@ -7,8 +8,8 @@ const SkillContainer = styled.div`
     width: 100vw;
     min-height: 90vh;
     height: auto;
-    background: #111;
-    color: white;
+    background: ${props => props.primaryColor || 'yellow'}
+    color: ${props => props.ternaryColor || 'black'};
 `;
 
 const skill = [
@@ -41,12 +42,16 @@ const skill = [
 
     },
 ];
-export default function Skills() {
+function Skills({theme, mobile}) {
     const [ choice, setChoice ] = useState(0);
     return (
-        <SkillContainer>
-            <SkillNav setChoice={setChoice} choice={choice} skills={skill.map(s => s.title)}/>
-            <SkillFeature {...skill[choice]} />
+        <SkillContainer primaryColor={theme[1]} ternaryColor={theme[3]}>
+            <SkillNav theme={theme} setChoice={setChoice} choice={choice} skills={skill.map(s => s.title)}/>
+            <SkillFeature {...skill[choice]} theme={theme}/>
         </SkillContainer>
     )
 }
+function mapStateToProps({theme, mobile}) {
+    return { theme, mobile }
+}
+export default connect(mapStateToProps)(Skills)

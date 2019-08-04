@@ -3,10 +3,6 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const activeStyle = {
-    color: 'red'
-}
-
 const LinkContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -29,7 +25,10 @@ const hoverStyle = {
     color: 'blue'
 }
 
-export default function MainLink({ name, icon }) {
+export default function MainLink({ name, icon, theme }) {
+    const activeStyle = {
+        color: theme[1] || 'red' //secondary color
+    }
     return (
         <LinkContainer>
                 <NavLink to={`/${name === 'home' ? '' : name}`} activeStyle={activeStyle}>

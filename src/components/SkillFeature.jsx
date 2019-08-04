@@ -80,10 +80,10 @@ const LineContainer = styled.div`
     z-index: 10;
     animation: 2s ${linearReg} ease-in both;
 `;
-export default function SkillFeature({ title, icon, description, skillsets }) {
+export default function SkillFeature({ title, icon, description, skillsets, theme }) {
     const planeInit = useCallback(node => {
         if(node !== null) {
-            startPlane(node, 0x111111);
+            startPlane(node, theme[1]);
         }
     })
     function createIcons(name, icons) {
