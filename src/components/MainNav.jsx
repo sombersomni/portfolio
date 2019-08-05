@@ -48,7 +48,7 @@ function MainNav({ theme, mobile }) {
       <SocialContainer mobile={mobile} isNav={true}>
         {socialLinks.map(social =>
           <SocialButton
-            theme={theme}
+            color={theme[1]}
             key={social.name}
             social={social.name}
             link={social.link} />)}

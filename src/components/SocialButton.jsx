@@ -11,13 +11,13 @@ const IconContainer = styled.div`
     }
 `;
 
-export default function SocialButton({social, link, theme}) {
+export default function SocialButton({social, link, color}) {
     return (
-        <IconContainer ternaryColor={theme[3]}>
+        <IconContainer>
             <a href={link}>
                 <FontAwesomeIcon 
                 key={social} 
-                style={{ color: theme[3] }}
+                style={{ color }}
                 icon={['fab', social]} />
             </a>
         </IconContainer>

@@ -18,17 +18,19 @@ const FeatureContainer = styled.div`
     left: 50%;
     margin-top: 50px;
     transform: translate(-50%,-50%);
-    box-shadow: 5px 5px #FFF;
+    box-shadow: 5px 5px ${props => props.primaryColor || 'white'};
     z-index: 10;
 `;
 
 const FeatureButton = styled.button`
     padding: 5px 15px;
     border-radius: 5px;
-    background: white;
-    color: #666;
+    background: ${props => props.primaryColor || 'white'};
     border: none;
     margin: 10px 5px;
+    &:hover {
+        box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.2);
+    }
 `;
 
 const Resume = styled.div`
@@ -51,20 +53,22 @@ const ButtonContainer = styled.div`
     justify-content: center;
 `;
 
-function Feature({theme}) {
+function Feature({theme, mobile}) {
     const [open, setOpen] = useState(false);
     return (
-        <FeatureContainer>
-            <ContactModal setOpen={setOpen} open={open} />
+        <FeatureContainer primaryColor={theme[1]}>
+            <ContactModal theme={theme} mobile={mobile} setOpen={setOpen} open={open} />
             <div>
                 <h3>
-                    Somber
+                    <span style={{ color: theme[1] }}>S</span>omber
                     <br />
-                    Somni
+                    <span style={{ color: theme[1] }}>S</span>omni
                 </h3>
                 <p>A self taught programmer, artist and mathematician</p>
                 <ButtonContainer>
-                    <FeatureButton onClick={() => { setOpen(true) }}>
+                    <FeatureButton 
+                        primaryColor={theme[1]}
+                        onClick={() => { setOpen(true) }}>
                         Hire Me
                     </FeatureButton>
                     <a href="#">
@@ -78,7 +82,7 @@ function Feature({theme}) {
                 <SocialContainer>
                     {socialLinks.map(social =>
                         <SocialButton
-                            theme={theme}
+                            color={theme[3]}
                             key={social.name}
                             social={social.name}
                             link={social.link} />)}
@@ -87,9 +91,10 @@ function Feature({theme}) {
         </FeatureContainer>
     );
 }
-function mapStateToProps({theme}) {
+function mapStateToProps({theme, mobile}) {
     return {
-        theme
+        theme,
+        mobile
     }
 }
 export default connect(mapStateToProps)(Feature)

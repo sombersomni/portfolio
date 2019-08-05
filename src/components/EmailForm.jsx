@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme => ({
     normalTextField: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
-        width: '45%'
     },
     textField: {
         marginLeft: theme.spacing(1),
@@ -19,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function EmailForm() {
+export default function EmailForm({mobile}) {
     const classes = useStyles();
     const inputRef = useRef(null);
     const [values, setValues] = useState({
@@ -27,6 +26,9 @@ export default function EmailForm() {
         name: '',
         message: ''
     });
+    const textfieldStyle = {
+        width: mobile ? '100%' : '45%'
+    }
     useEffect(() => {
         inputRef.current.focus();
     }, [])
@@ -43,6 +45,7 @@ export default function EmailForm() {
                     inputRef={inputRef}
                     label="Email"
                     value={values.email}
+                    style={textfieldStyle}
                     onChange={e => { setValues({ ...values, name: e.target.value }) }}
                     className={classes.normalTextField}
                     type="email"
@@ -56,6 +59,7 @@ export default function EmailForm() {
                     label="Name"
                     className={classes.normalTextField}
                     value={values.name}
+                    style={textfieldStyle}
                     onChange={e => { setValues({ ...values, name: e.target.value }) }}
                     margin="normal"
                     variant="outlined"

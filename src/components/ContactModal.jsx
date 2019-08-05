@@ -8,8 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const useStyles = makeStyles(theme => ({
   paper: {
     position: 'absolute',
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     borderRadius: 25,
     boxShadow: theme.shadows[5],
@@ -18,6 +16,7 @@ const useStyles = makeStyles(theme => ({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%,-50%)',
+    transition: 'width 1s'
   },
 }));
 
@@ -31,8 +30,14 @@ const IconContainer = styled.div`
     cursor: pointer;
   }
 `;
-export default function ContactModal({ open, setOpen }) {
+export default function ContactModal({ open, setOpen, theme, mobile }) {
   const classes = useStyles();
+  const containerStyle = {
+    background: theme[0], 
+    color: theme[3], 
+    borderColor: theme[3],
+    width: mobile ? '75vw' : '50vw'
+  }
   return (
     <Modal
       aria-labelledby="simple-modal-title"
@@ -40,11 +45,11 @@ export default function ContactModal({ open, setOpen }) {
       open={open}
       onClose={e => { setOpen(false) }}
     >
-      <div className={classes.paper}>
+      <div className={classes.paper} style={ containerStyle }>
         <IconContainer onClick={() => { setOpen(false) }}>
           <FontAwesomeIcon icon={['far', 'times']} />
         </IconContainer>
-        <EmailForm />
+        <EmailForm mobile={mobile} />
       </div>
     </Modal>
   );

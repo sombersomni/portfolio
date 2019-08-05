@@ -32,6 +32,7 @@ library.add(
 
 function App({dResizeTracker}) {
   useEffect(() => {
+    dResizeTracker();
     window.addEventListener('resize', dResizeTracker);
     return () => {
       window.removeEventListener('resize', dResizeTracker)
@@ -54,8 +55,7 @@ function App({dResizeTracker}) {
 
 function mapDispatchToProps(dispatch) {
   function resizeTracker(e) {
-    console.log(e.target.innerWidth);
-    const { innerWidth } = e.target || window
+    const { innerWidth } = e ? e.target : window
     if (innerWidth <= 600) {
       dispatch({ type: 'UPDATE_MOBILE', payload: true })
     } else {
