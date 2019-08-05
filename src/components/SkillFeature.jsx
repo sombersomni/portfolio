@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { keyframes } from 'styled-components';
 //external scripts
@@ -6,7 +6,24 @@ import startPlane from '../scripts/plane';
 
 //components
 import Capsule from './Capsule.jsx';
+//data
 //animation
+const fadeOut = keyframes`
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 0;
+  }
+`;
+const fadeIn = keyframes`
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+`;
 const linearReg = keyframes`
   0% {
     transform: rotate(0deg);
@@ -34,11 +51,11 @@ const linearReg = keyframes`
   }
 `;
 
-
 const SkillFeatureContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: ${props => props.time}ms ${props => props.fade} ease-in both;
 `;
 
 const Description = styled.p`
@@ -80,7 +97,10 @@ const LineContainer = styled.div`
     z-index: 10;
     animation: 2s ${linearReg} ease-in both;
 `;
-export default function SkillFeature({ title, icon, description, skillsets, theme }) {
+export default function SkillFeature({ title, icon, description, skillsets, theme, choice }) {
+    useEffect(() => {
+    }, [choice]); 
+
     const planeInit = useCallback(node => {
         if(node !== null) {
             startPlane(node, theme[1]);

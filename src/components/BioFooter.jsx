@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-
+//imgs
+import reactLogo from '../imgs/react-logo.png'
 const BioContainer = styled.div`
     width: 100vw;
     height: auto;
@@ -41,6 +42,9 @@ const Footer = styled.div`
     flex-direction: column;
 `;
 const Bio = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: ${props => props.mobile ? 'column' : 'row'};
 `;
 function BioFooter({ description, src, theme, mobile }) {
@@ -65,7 +69,9 @@ function BioFooter({ description, src, theme, mobile }) {
 
             </Bio>
             <Footer>
-                <FooterMessage>This site was made using <span>React</span> and ❤️</FooterMessage>
+                <FooterMessage>This site was made using <span style={{fontFamily: 'Archivo Black, sans-serif', color: '#00B9CA', textTransform: 'uppercase'}}>
+                    <div><p>React</p><img src={reactLogo} style={{height:50}}/></div>
+                    </span> and ☕</FooterMessage>
                 <EndFooter>
                     <p>Somber Somni ©️ 2019</p>
                 </EndFooter>

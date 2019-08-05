@@ -6,6 +6,7 @@ import Feature from '../components/Feature.jsx';
 import LogoSlider from '../components/LogoSlider.jsx';
 import Skills from '../components/Skills.jsx';
 import BioFooter from '../components/BioFooter.jsx';
+import {Container} from '../components/Containers.jsx';
 //images 
 import cutLogo from '../imgs/cut-logo.png';
 import hihoLogo from '../imgs/hiho-logo.png';
@@ -14,11 +15,6 @@ import empireLogo from '../imgs/empire-logo.jpg';
 import golfLogo from '../imgs/golf-logo.jpg';
 import avatar from '../imgs/profile-toon.jpg';
 
-const HomeContainer = styled.div`
-    width: 100vw;
-    height: 100vh;
-    margin: 0px;
-`;
 
 const FeatureContainer = styled.div`
     width: 100vw;
@@ -35,7 +31,7 @@ viewing a problem that some may deem unsolvable.`;
 
 export default function Home() {
     return (
-        <HomeContainer>
+        <Container>
           <FeatureContainer>
             <Feature />
           </FeatureContainer>
@@ -44,6 +40,6 @@ export default function Home() {
           <BioFooter 
             description={desc}
             src={avatar}/>
-        </HomeContainer>
+        </Container>
     );
 }

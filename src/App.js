@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { debounce } from 'lodash';
 //components
-import Home from './pages/Home.jsx'
+import Home from './pages/Home.jsx';
+import Code from './pages/Code.jsx';
 import MainNav from './components/MainNav.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode, faTimes, faServer, faDatabase, faPlus, faBrain, faChartPie } from '@fortawesome/pro-regular-svg-icons'
@@ -44,7 +45,7 @@ function App({dResizeTracker}) {
         <MainNav />
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/code' component={Home} />
+          <Route exact path='/code' component={Code} />
           <Route exact path='/art' component={Home} />
           <Route exact path='/contact' component={Home} />
         </Switch>
