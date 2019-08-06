@@ -1,14 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 //components
-import { Container } from '../components/Containers.jsx';
+import { Container, FeatureContainer} from '../components/Containers.jsx';
 import CurrentWork from '../components/CurrentWork.jsx';
+import Feature from '../components/Feature.jsx';
 
-export default function Code() {
+function Code() {
     return (
         <Container>
-            <CurrentWork />
+            <FeatureContainer bgcolor={'#CCC'}>
+                <CurrentWork />
+            </FeatureContainer>
         </Container>
     );
 }
+
+function mapStateToProps({theme, mobile}) {
+    return { theme, mobile }
+}
+export default connect(mapStateToProps)(Code);

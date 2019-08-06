@@ -6,7 +6,7 @@ import Feature from '../components/Feature.jsx';
 import LogoSlider from '../components/LogoSlider.jsx';
 import Skills from '../components/Skills.jsx';
 import BioFooter from '../components/BioFooter.jsx';
-import {Container} from '../components/Containers.jsx';
+import {Container, FeatureContainer} from '../components/Containers.jsx';
 //images 
 import cutLogo from '../imgs/cut-logo.png';
 import hihoLogo from '../imgs/hiho-logo.png';
@@ -15,12 +15,6 @@ import empireLogo from '../imgs/empire-logo.jpg';
 import golfLogo from '../imgs/golf-logo.jpg';
 import avatar from '../imgs/profile-toon.jpg';
 
-
-const FeatureContainer = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background: #ff0022;
-`;
 const brandLogos = [cutLogo, hihoLogo, viceLogo, golfLogo, empireLogo];
 const desc = `As a self taught programmer, artist and mathematician, 
 I firmly believe that if you are curious enough, you can learn 

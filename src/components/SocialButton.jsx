@@ -14,7 +14,7 @@ const IconContainer = styled.div`
 export default function SocialButton({social, link, color}) {
     return (
         <IconContainer>
-            <a href={link}>
+            <a href={link} target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon 
                 key={social} 
                 style={{ color }}
