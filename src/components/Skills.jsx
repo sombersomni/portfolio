@@ -18,7 +18,7 @@ function Skills({theme, mobile}) {
     return (
         <SkillContainer primaryColor={theme[1]} ternaryColor={theme[3]}>
             <SkillNav theme={theme} setChoice={setChoice} choice={choice} skills={skill.map(s => s.title)}/>
-            <SkillFeature {...skill[choice]} theme={theme} choice={choice}/>
+            {skill.map((s, i) => i === choice ? <SkillFeature key={s.title} {...s} theme={theme} choice={choice}/> : null )}
         </SkillContainer>
     )
 }

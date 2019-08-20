@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
+
+const fadeIn = keyframes`
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+`;
 
 const defaultStyle = `
 padding: 4px 8px;
@@ -13,6 +22,7 @@ const DefaultContainer = styled.div`
     ${defaultStyle}
     background: yellow;
     font-size: 0.8em;
+    animation: 1s ${fadeIn} ${props => props.i * 100}ms ease-out both;
 `;
 
 const CapsuleContainer = styled.div`
@@ -23,11 +33,11 @@ const CapsuleContainer = styled.div`
         background: ${props => props.secondColor};
     }
 `;
-export default function Capsule({ label, show, setChoice, selected, theme }) {
+export default function Capsule({ label, show, setChoice, selected, theme, i }) {
 
     return (
         <div>
-            {show ? <DefaultContainer> {label} </DefaultContainer> :
+            {show ? <DefaultContainer i={i}> {label} </DefaultContainer> :
                 <CapsuleContainer
                     selected={selected}
                     primaryColor={theme[0]}

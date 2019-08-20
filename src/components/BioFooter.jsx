@@ -18,7 +18,7 @@ const Avatar = styled.div`
     width: 200px;
     height: 200px;
     overflow: hidden;
-    box-shadow: 1px 1px 5px 2px ${props => props.secondaryColor || 'white'}
+    border: 4px solid white;
 `;
 const Desc = styled.p`
     width: ${props => props.mobile ? '80vw' : '50vw'};

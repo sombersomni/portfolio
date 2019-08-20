@@ -10,7 +10,7 @@ import Capsule from './Capsule.jsx';
 //animation
 const fadeOut = keyframes`
   0% {
-      opacity: 0;
+      opacity: 1;
   }
   100% {
       opacity: 0;
@@ -19,9 +19,11 @@ const fadeOut = keyframes`
 const fadeIn = keyframes`
   0% {
       opacity: 0;
+      transform: translateY(10px);
   }
   100% {
       opacity: 1;
+      transform: translateY(0px);
   }
 `;
 const linearReg = keyframes`
@@ -55,7 +57,7 @@ const SkillFeatureContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: ${props => props.time}ms ${props => props.fade} ease-in both;
+    animation: ${props => props.time}ms ${fadeIn} ease-out both;
 `;
 
 const Description = styled.p`
@@ -153,11 +155,11 @@ export default function SkillFeature({ title, icon, description, skillsets, them
         }
     }
     return (
-        <SkillFeatureContainer>
+        <SkillFeatureContainer time={1000}>
             <h1 style={{ color: 'yellow' }}>{title}</h1>
             {createIcons(title, icon)}
             <SkillSets>
-                {skillsets.map(skill => <Capsule key={skill} label={skill} show={true} />)}
+                {skillsets.map((skill, i) => <Capsule key={skill} label={skill} i={i} show={true} />)}
             </SkillSets>
             <Description>{description}</Description>
         </SkillFeatureContainer>
