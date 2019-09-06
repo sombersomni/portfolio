@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { debounce } from 'lodash';
+import { debounce, throttle } from 'lodash';
 //components
 import Home from './pages/Home.jsx';
 import Code from './pages/Code.jsx';
@@ -33,12 +33,14 @@ library.add(
   faPlus,
   faFilePdf);
 
-function App({dResizeTracker}) {
+function App({dResizeTracker, tScrollTracker}) {
   useEffect(() => {
     dResizeTracker();
     window.addEventListener('resize', dResizeTracker);
+    window.addEventListener('scroll', tScrollTracker);
     return () => {
-      window.removeEventListener('resize', dResizeTracker)
+      window.removeEventListener('resize', dResizeTracker);
+      window.removeEventListener('scroll', tScrollTracker);
     }
   }, [])
   return (
@@ -59,15 +61,22 @@ function App({dResizeTracker}) {
 function mapDispatchToProps(dispatch) {
   function resizeTracker(e) {
     const { innerWidth } = e ? e.target : window
+    dispatch({type: 'UPDATE_WIDTH', payload: innerWidth});
     if (innerWidth <= 600) {
       dispatch({ type: 'UPDATE_MOBILE', payload: true })
     } else {
       dispatch({ type: 'UPDATE_MOBILE', payload: false })
     }
   }
+  function scrollTracker(e) {
+    const { scrollY } = window;
+    dispatch({type: 'UPDATE_SCROLL_Y', payload: scrollY});
+  }
   const dResizeTracker = debounce(resizeTracker, 100);
+  const tScrollTracker = throttle(scrollTracker, 200);
   return {
-    dResizeTracker
+    dResizeTracker,
+    tScrollTracker
   }
 }
 export default connect(null,mapDispatchToProps)(App);
