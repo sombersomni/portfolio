@@ -33,8 +33,14 @@ const CapsuleContainer = styled.div`
         background: ${props => props.secondColor};
     }
 `;
-export default function Capsule({ label, show, setChoice, selected, theme, i }) {
 
+const OutlineContainer = styled.a`
+   ${defaultStyle}
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+`;
+export default function Capsule({ label, show, setChoice, selected, theme, i }) {
     return (
         <div>
             {show ? <DefaultContainer i={i}> {label} </DefaultContainer> :
@@ -47,4 +53,14 @@ export default function Capsule({ label, show, setChoice, selected, theme, i }) 
                 </CapsuleContainer>}
         </div>
     );
+}
+
+export function OutlineCapsule({label, link}) {
+    return (
+        <div>
+            <OutlineContainer href={link}>
+                {label}
+            </OutlineContainer>
+        </div>
+    )
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Karla|Major+Mono+Display|Archivo+Black|Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abel|Karla|Roboto+Mono:400,700&display=swap');
 
 body {
   margin: 0;
@@ -10,7 +10,7 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Major Mono Display', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 button {

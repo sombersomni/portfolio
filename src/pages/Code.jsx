@@ -1,20 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import pick_flicks_header from '../imgs/projects/pick_flicks_header.png';
 //components
-import { Container, FeatureContainer} from '../components/Containers.jsx';
+import { Container, FeatureContainer } from '../components/Containers.jsx';
 import CurrentWork from '../components/CurrentWork.jsx';
 import Project from '../components/Project.jsx';
+import projects from '../data/projects';
 
 const Projects = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 24%;
+    display: relative;
+    width: 25%;
     min-width: 200px;
     height: 100vh;
-    background: #999;
-    position: static;
+    max-height: 100vh;
     border-left: 2px solid black;
 `;
 
@@ -23,48 +21,46 @@ const MainContainer = styled.div`
     flex-direction: row;
     flex-wrap: no-wrap;
     padding-top: 80px;
+    margin: 0;
 `;
 
-const projects = [
-    {
-        headerImg: pick_flicks_header,
-        desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
-        tagline: "A movie website built using MovieDB API",
-        title: "Pick Flicks"
-    },
-    {
-        headerImg: pick_flicks_header,
-        desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
-        tagline: "A movie website built using MovieDB API",
-        title: "Pick Flicks"
-    },
-    {
-        headerImg: pick_flicks_header,
-        desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
-        tagline: "A movie website built using MovieDB API",
-        title: "Pick Flicks"
-    },
-    {
-        headerImg: pick_flicks_header,
-        desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
-        tagline: "A movie website built using MovieDB API",
-        title: "Pick Flicks"
-    }
-]
+const ProjContainer = styled.div`
+    position: sticky; 
+    width: 100%; 
+    min-width: 200px;
+    height: 100%;
+    max-height: 100%;
+    color: black;
+    z-index: 0;
+    overflow-y: scroll;
+`;
+
+const ProjectFilters = styled.div``;
+
 function Code() {
+    const [projIndex, setCurrentProject] = useState(0)
     return (
         <Container>
             <MainContainer>
-                <CurrentWork {...projects[0]} />
+                <CurrentWork {...projects[projIndex]} />
                 <Projects>
-                     {projects.map((project, i) => <Project key={i.toString()} title={project.title}/>)}
+                    <ProjContainer>
+                        {projects ? projects.map((project, i) => 
+                        <Project 
+                            key={i.toString()} 
+                            {...project}
+                            chosen={projIndex === i}
+                            i={i}
+                            setCurrentProject={setCurrentProject} />)
+                        : null}
+                    </ProjContainer>
                 </Projects>
-             </MainContainer>
+            </MainContainer>
         </Container>
     );
 }
 
-function mapStateToProps({theme, mobile}) {
+function mapStateToProps({ theme, mobile }) {
     return { theme, mobile }
 }
 export default connect(mapStateToProps)(Code);

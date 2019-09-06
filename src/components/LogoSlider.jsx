@@ -15,9 +15,10 @@ const SlideContainer = styled.div`
 
 const LogoSliderContainer = styled.div`
     width: 80%;
-    height: 200px;
+    min-height: 200px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 `;
@@ -43,7 +44,7 @@ function LogoSlider({ brands, mobile, screenWidth, scrollYPos, duration }) {
     }, [scrollYPos])
     return (
         <SlideContainer ref={slideRef}>
-            <h4>Brands I've Worked with</h4>
+            <h1 style={{ fontFamily: 'Abel'}}>Brands I've Worked with</h1>
             <LogoSliderContainer>
                 {elReached ? <Trail
                     items={brands}
@@ -53,8 +54,8 @@ function LogoSlider({ brands, mobile, screenWidth, scrollYPos, duration }) {
                     {brand => props =>  (<img
                         src={brand}
                         alt={brand}
-                        width={mobile ? 'auto' : width}
-                        height={mobile ? 100 : 'auto'}
+                        width={mobile ? 100: width}
+                        height={'auto'}
                         style={props}
                     />)}
                 </Trail> : null}
