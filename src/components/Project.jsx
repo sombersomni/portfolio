@@ -13,7 +13,7 @@ const ProjectContainer = styled.div`
     padding: 5px 0px 10px 0px;
     background: ${props => props.chosen ? "#CCC" : "white"};
     box-shadow: ${props => props.chosen ? "2px 4px 4px blue" : "none"};
-    transition: transform 500ms, height 1s;
+    transition: transform 500ms, height 500ms;
     &:hover {
         cursor: pointer;
     }
@@ -45,13 +45,14 @@ function Project({ tagline, title, type, setCurrentProject, i, chosen }) {
                 items={showOverview}
                 config={{ duration: 500 }}
                 from={{ opacity: 0, height: 0 }}
-                enter={{ opacity: 1, height: 15 }}
+                enter={{ opacity: 1, height: 'auto' }}
                 leave={{ opacity: 0, height: 0 }}>
                 {showOverview => showOverview && (props =>
                     <p style={{ 
                         ...props,
                         padding: '0px 10px',
-                        marginTop: -10 }}>{tagline}</p>
+                        marginTop: -10,
+                        overflowY: 'hidden' }}>{tagline}</p>
                 )}
             </Transition>
         </ProjectContainer>

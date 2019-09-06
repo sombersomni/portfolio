@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ArrowButton from './ArrowButton.jsx';
 import styled from 'styled-components';
-import {OutlineCapsule} from './Capsule.jsx';
+import { OutlineCapsule } from './Capsule.jsx';
 
 
 const WorkContainer = styled.div`
@@ -35,40 +35,40 @@ const Work = styled.div`
 `;
 
 const ModalContainer = styled.div`
-    background: rgba(0,0,0,0);
+    background: rgba(0,0,0,0.5);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    transition: background 1s;
+    transition: opacity 1s;
+    opacity: 0;
     &:hover {
-        background: rgba(0,0,0,0.5);
+        opacity: 1;
     }
 `;
 
-export default function CurrentWork({bgpos, desc, title, headerImg, tagline, websiteLink}) {
+export default function CurrentWork({ bgpos, desc, title, headerImg, tagline, websiteLink }) {
     return (
         <WorkContainer>
             <Work>
                 <WorkTitle>
                     <h1>{title}</h1>
                     <p style={{ fontWeight: 'bold', padding: 25 }}>{tagline}</p>
-                    <p style={{ padding: 25 } }>{desc}</p>
+                    <p style={{ padding: 25 }}>{desc}</p>
                 </WorkTitle>
-                <WorkHeader 
+                <WorkHeader
                     bg={headerImg}
                     bgpos={bgpos}>
-                        <ModalContainer>
-                            <OutlineCapsule 
-                                label='Visit Website' 
-                                target='_blank'
-                                link={websiteLink}/>
-                        </ModalContainer> 
+                    <ModalContainer>
+                        <OutlineCapsule
+                            label='Visit Website'
+                            link={websiteLink} />
+                    </ModalContainer>
                 </WorkHeader>
-                    
+
             </Work>
-        </WorkContainer> 
+        </WorkContainer>
     );
 }

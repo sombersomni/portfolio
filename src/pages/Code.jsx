@@ -6,9 +6,9 @@ import { Container, FeatureContainer } from '../components/Containers.jsx';
 import CurrentWork from '../components/CurrentWork.jsx';
 import Project from '../components/Project.jsx';
 import projects from '../data/projects';
+import DropSelect from '../components/DropSelect.jsx';
 
 const Projects = styled.div`
-    display: relative;
     width: 25%;
     min-width: 200px;
     height: 100vh;
@@ -25,17 +25,19 @@ const MainContainer = styled.div`
 `;
 
 const ProjContainer = styled.div`
-    position: sticky; 
+    position: -webkit-sticky;
+    position: sticky;
     width: 100%; 
     min-width: 200px;
-    height: 100%;
-    max-height: 100%;
+    height: 80%;
     color: black;
     z-index: 0;
     overflow-y: scroll;
 `;
 
 const ProjectFilters = styled.div``;
+
+const options = ["none", "app", "module", "website"];
 
 function Code() {
     const [projIndex, setCurrentProject] = useState(0)
@@ -44,15 +46,21 @@ function Code() {
             <MainContainer>
                 <CurrentWork {...projects[projIndex]} />
                 <Projects>
+                    <h3>Projects</h3>
+                    <ProjectFilters>
+                        <DropSelect 
+                            options={options}
+                            label='filter by' />
+                    </ProjectFilters>
                     <ProjContainer>
-                        {projects ? projects.map((project, i) => 
-                        <Project 
-                            key={i.toString()} 
-                            {...project}
-                            chosen={projIndex === i}
-                            i={i}
-                            setCurrentProject={setCurrentProject} />)
-                        : null}
+                        {projects ? projects.map((project, i) =>
+                            <Project
+                                key={i.toString()}
+                                {...project}
+                                chosen={projIndex === i}
+                                i={i}
+                                setCurrentProject={setCurrentProject} />)
+                            : null}
                     </ProjContainer>
                 </Projects>
             </MainContainer>

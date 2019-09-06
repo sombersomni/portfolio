@@ -58,7 +58,9 @@ export default function Capsule({ label, show, setChoice, selected, theme, i }) 
 export function OutlineCapsule({label, link}) {
     return (
         <div>
-            <OutlineContainer href={link}>
+            <OutlineContainer 
+                href={link}
+                target='_blank'>
                 {label}
             </OutlineContainer>
         </div>

@@ -16,7 +16,8 @@ export default [
         desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
         tagline: "A weather app that gives you weekly forecast",
         title: "Weather Report",
-        type: "App"
+        type: "App",
+        websiteLink: "https://weather-report-demo.herokuapp.com/"
     },
     {
         headerImg: encage_header,
@@ -24,6 +25,7 @@ export default [
         tagline: "An npm package that protects your instances",
         title: "Encage",
         type: "NPM Module",
+        websiteLink: "https://www.npmjs.com/package/encage",
         bgpos: "left"
     },
     {
@@ -31,21 +33,24 @@ export default [
         desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
         tagline: "An app for building a to do list",
         title: "Todo Demo",
-        type: "App"
+        type: "App",
+        websiteLink: "https://simple-todos-hook-demo.herokuapp.com/"
     },
     {
         headerImg: pick_flicks_header,
         desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
         tagline: "A movie website built using MovieDB API",
         title: "Pick Flicks",
-        type: "Website"
+        type: "Website",
+        websiteLink: "https://pick-flicks-app.herokuapp.com/"
     },
     {
         headerImg: weather_report_header,
         desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
         tagline: "A weather app that gives you weekly forecast",
         title: "Weather Report",
-        type: "App"
+        type: "App",
+        websiteLink: "https://weather-report-demo.herokuapp.com/"
     },
     {
         headerImg: encage_header,
@@ -53,6 +58,7 @@ export default [
         tagline: "An npm package that protects your instances",
         title: "Encage",
         type: "NPM Module",
+        websiteLink: "https://www.npmjs.com/package/encage",
         bgpos: "left"
     },
     {
@@ -60,21 +66,24 @@ export default [
         desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
         tagline: "An app for building a to do list",
         title: "Todo Demo",
-        type: "App"
+        type: "App",
+        websiteLink: "https://simple-todos-hook-demo.herokuapp.com/"
     },
     {
         headerImg: pick_flicks_header,
         desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
         tagline: "A movie website built using MovieDB API",
         title: "Pick Flicks",
-        type: "Website"
+        type: "Website",
+        websiteLink: "https://pick-flicks-app.herokuapp.com/"
     },
     {
         headerImg: weather_report_header,
         desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
         tagline: "A weather app that gives you weekly forecast",
         title: "Weather Report",
-        type: "App"
+        type: "App",
+        websiteLink: "https://weather-report-demo.herokuapp.com/"
     },
     {
         headerImg: encage_header,
@@ -82,6 +91,7 @@ export default [
         tagline: "An npm package that protects your instances",
         title: "Encage",
         type: "NPM Module",
+        websiteLink: "https://www.npmjs.com/package/encage",
         bgpos: "left"
     },
     {
@@ -89,6 +99,7 @@ export default [
         desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
         tagline: "An app for building a to do list",
         title: "Todo Demo",
-        type: "App"
+        type: "App",
+        websiteLink: "https://simple-todos-hook-demo.herokuapp.com/"
     }
 ]
