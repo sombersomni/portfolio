@@ -2,17 +2,16 @@ import React from 'react';
 import ArrowButton from './ArrowButton.jsx';
 import styled from 'styled-components';
 import Chip from '@material-ui/core/Chip';
-import Project from './Project.jsx';
+
 
 const WorkContainer = styled.div`
-    width: 100vw;
+    width: 75%;
     height: 100vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     background: yellow;
-    padding-top: 80px;
 `;
 
 const WorkTitle = styled.div`
@@ -23,24 +22,18 @@ const WorkTitle = styled.div`
 
 const WorkHeader = styled.div`
     width: 75%;
-    background: url(${props => props.bg});
+    background: url(${props => props.bg}) no-repeat;
     background-position: center;
+    background-size: cover;
 `;
 
 const Work = styled.div`
-    width: 75%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;
 `;
 
-const Projects = styled.div`
-    width: 25%;
-    min-width: 200px;
-    height: 100%;
-    background: #999;
-    position: static;
-`;
 export default function CurrentWork({desc, title, headerImg, tagline}) {
     return (
         <WorkContainer>
@@ -60,9 +53,6 @@ export default function CurrentWork({desc, title, headerImg, tagline}) {
                 </WorkTitle>
                 <WorkHeader bg={headerImg} />
             </Work>
-            <Projects>
-                
-            </Projects>
         </WorkContainer> 
     );
 }
