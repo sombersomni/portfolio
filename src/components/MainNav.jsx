@@ -10,8 +10,7 @@ const {socialLinks, SocialContainer} = socials;
 const navLinks = [
   { name: 'home', icon: 'home-alt' },
   { name: 'code', icon: 'brackets-curly' },
-  { name: 'art', icon: 'pencil-alt' },
-  { name: 'contact', icon: 'envelope' }]
+  { name: 'about', icon: 'envelope' }]
 
 const NavContainer = styled.div`
   display: flex;

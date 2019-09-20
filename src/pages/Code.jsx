@@ -9,7 +9,7 @@ import projects from '../data/projects';
 import DropSelect from '../components/DropSelect.jsx';
 
 const Projects = styled.div`
-    width: 25%;
+    width: ${props => props.mobile ? '100%' : '25%'};
     min-width: 200px;
     height: 100vh;
     max-height: 100vh;
@@ -17,19 +17,19 @@ const Projects = styled.div`
 `;
 
 const MainContainer = styled.div`
-    display: flex;
-    flex-direction: row;
+    display: ${props => props.mobile ? 'block' : 'flex'};
+    flex-direction: ${props => props.mobile ? 'column' : 'row'};
     flex-wrap: no-wrap;
     padding-top: 80px;
     margin: 0;
 `;
 
 const ProjContainer = styled.div`
-    position: -webkit-sticky;
-    position: sticky;
+    position: ${props => props.mobile ? "relative" :"-webkit-sticky"};
+    position:  ${props => props.mobile ? "relative" : "sticky"};
     width: 100%; 
     min-width: 200px;
-    height: 80%;
+    height: ${props => props.mobile ? "200px" : "80%"};
     color: black;
     z-index: 0;
     overflow-y: scroll;
@@ -37,23 +37,24 @@ const ProjContainer = styled.div`
 
 const ProjectFilters = styled.div``;
 
-const options = ["none", "app", "module", "website"];
-
-function Code() {
-    const [projIndex, setCurrentProject] = useState(0)
+function Code({mobile}) {
+    const [projIndex, setCurrentProject] = useState(0);
+    const [filterBy, setFilterBy] = useState('none');
+    const projectsFiltered =  filterBy === 'none' ? projects : projects.filter(proj => proj.type.toLowerCase().includes(filterBy));
     return (
         <Container>
-            <MainContainer>
-                <CurrentWork {...projects[projIndex]} />
-                <Projects>
+            <MainContainer mobile={mobile} >
+                <CurrentWork {...projects[projIndex]} mobile={mobile} />
+                <Projects mobile={mobile}>
                     <h3>Projects</h3>
-                    <ProjectFilters>
-                        <DropSelect 
-                            options={options}
-                            label='filter by' />
-                    </ProjectFilters>
-                    <ProjContainer>
-                        {projects ? projects.map((project, i) =>
+                    <select onChange={e => { setFilterBy(e.target.value) }}>
+                        <option value="none">None</option>
+                        <option value="app">App</option>
+                        <option value="module">Module</option>
+                        <option value="website">Website</option>
+                    </select>
+                    <ProjContainer mobile={mobile}>
+                        {projects ? projectsFiltered.map((project, i) =>
                             <Project
                                 key={i.toString()}
                                 {...project}

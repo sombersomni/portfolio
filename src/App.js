@@ -5,6 +5,7 @@ import { debounce, throttle } from 'lodash';
 //components
 import Home from './pages/Home.jsx';
 import Code from './pages/Code.jsx';
+import About from './pages/About.jsx';
 import MainNav from './components/MainNav.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
@@ -50,8 +51,7 @@ function App({dResizeTracker, tScrollTracker}) {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/code' component={Code} />
-          <Route exact path='/art' component={Home} />
-          <Route exact path='/contact' component={Home} />
+          <Route exact path='/about' component={About} />
         </Switch>
       </Router>
     </div>

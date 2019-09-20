@@ -41,20 +41,12 @@ function Project({ tagline, title, type, setCurrentProject, i, chosen }) {
                     label={type} />
 
             </ProjectTitle>
-            <Transition
-                items={showOverview}
-                config={{ duration: 500 }}
-                from={{ opacity: 0, height: 0 }}
-                enter={{ opacity: 1, height: 'auto' }}
-                leave={{ opacity: 0, height: 0 }}>
-                {showOverview => showOverview && (props =>
-                    <p style={{ 
-                        ...props,
-                        padding: '0px 10px',
-                        marginTop: -10,
-                        overflowY: 'hidden' }}>{tagline}</p>
-                )}
-            </Transition>
+            <p style={{
+                padding: '0px 10px',
+                marginTop: -10,
+                overflowY: 'hidden'
+            }}>{tagline}
+            </p>
         </ProjectContainer>
     )
 }

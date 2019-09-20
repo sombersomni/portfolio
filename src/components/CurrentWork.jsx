@@ -5,8 +5,10 @@ import { OutlineCapsule } from './Capsule.jsx';
 
 
 const WorkContainer = styled.div`
-    width: 75%;
-    height: 100vh;
+    width:  ${props => props.mobile ? '100%' : '75%'};
+    height: ${props => props.mobile ? '60vh' : '100vh'};
+    position: ${props => props.mobile ? "-webkit-sticky" : "relative"};
+    position:  ${props => props.mobile ? "sticky" : "relative"};
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -15,13 +17,14 @@ const WorkContainer = styled.div`
 `;
 
 const WorkTitle = styled.div`
-    width: 25%;
+    width:  ${props => props.mobile ? '100%' : '25%'};
     min-width: 250px;
     background: white;
 `;
 
 const WorkHeader = styled.div`
-    width: 75%;
+    width: ${props => props.mobile ? '100%' : '75%'};
+    height: 100%;
     background: url(${props => props.bg}) no-repeat;
     background-position: ${props => props.bgpos || 'center'};
     background-size: cover;
@@ -31,7 +34,7 @@ const Work = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: ${props => props.mobile ? 'column' : 'row'};
 `;
 
 const ModalContainer = styled.div`
@@ -49,25 +52,29 @@ const ModalContainer = styled.div`
     }
 `;
 
-export default function CurrentWork({ bgpos, desc, title, headerImg, tagline, websiteLink }) {
+export default function CurrentWork({ bgpos, desc, title, headerImg, tagline, websiteLink, mobile}) {
     return (
-        <WorkContainer>
-            <Work>
-                <WorkTitle>
+        <WorkContainer mobile={mobile}>
+            <Work mobile={mobile}>
+                <WorkTitle mobile={mobile}>
                     <h1>{title}</h1>
-                    <p style={{ fontWeight: 'bold', padding: 25 }}>{tagline}</p>
-                    <p style={{ padding: 25 }}>{desc}</p>
+                    {!mobile ?
+                    (<div>
+                        <p style={{ fontWeight: 'bold', padding: 25 }}>{tagline}</p>
+                        <p style={{ padding: 25 }}>{desc}</p>
+                    </div>) 
+                    : null}
                 </WorkTitle>
                 <WorkHeader
                     bg={headerImg}
-                    bgpos={bgpos}>
+                    bgpos={bgpos}
+                    mobile={mobile}>
                     <ModalContainer>
                         <OutlineCapsule
                             label='Visit Website'
                             link={websiteLink} />
                     </ModalContainer>
                 </WorkHeader>
-
             </Work>
         </WorkContainer>
     );
