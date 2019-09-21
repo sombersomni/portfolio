@@ -6,6 +6,7 @@ import LogoSlider from '../components/LogoSlider.jsx';
 import Skills from '../components/Skills.jsx';
 import BioFooter from '../components/BioFooter.jsx';
 import {Container, FeatureContainer} from '../components/Containers.jsx';
+import InteractiveBG from '../components/InteractiveBG.jsx';
 //images 
 import cutLogo from '../imgs/brands/cut-logo.png';
 import hihoLogo from '../imgs/brands/hiho-logo.png';
@@ -25,8 +26,9 @@ viewing a problem that some may deem unsolvable.`;
 export default function Home() {
     return (
         <Container>
-          <FeatureContainer>
-            <Feature />
+          <FeatureContainer style={{ overflow: "hidden" }}>
+            {/* <Feature /> */}
+            <InteractiveBG />
           </FeatureContainer>
           <Skills />
           <LogoSlider brands={brandLogos} />

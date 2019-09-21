@@ -60,7 +60,6 @@ function Feature({ theme, mobile }) {
     const [open, setOpen] = useState(false);
     return (
         <FeatureContainer primaryColor={theme[1]}>
-            <InteractiveBG />
             <ContactModal theme={theme} mobile={mobile} setOpen={setOpen} open={open} />
             <div>
                 <h3>
