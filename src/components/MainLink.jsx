@@ -17,14 +17,6 @@ const LinkContainer = styled.div`
     }
 `;
 
-const defaultStyle = {
-    color: '#222'
-}
-
-const hoverStyle = {
-    color: 'blue'
-}
-
 export default function MainLink({ name, icon, theme }) {
     const activeStyle = {
         color: theme[1] || 'red' //secondary color

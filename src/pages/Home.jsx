@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 //components
 import Feature from '../components/Feature.jsx';
@@ -8,12 +7,12 @@ import Skills from '../components/Skills.jsx';
 import BioFooter from '../components/BioFooter.jsx';
 import {Container, FeatureContainer} from '../components/Containers.jsx';
 //images 
-import cutLogo from '../imgs/cut-logo.png';
-import hihoLogo from '../imgs/hiho-logo.png';
-import viceLogo from '../imgs/vice-logo.png';
-import empireLogo from '../imgs/empire-logo.jpg';
-import golfLogo from '../imgs/golf-logo.jpg';
-import avatar from '../imgs/profile-toon.jpg';
+import cutLogo from '../imgs/brands/cut-logo.png';
+import hihoLogo from '../imgs/brands/hiho-logo.png';
+import viceLogo from '../imgs/brands/vice-logo.png';
+import empireLogo from '../imgs/brands/empire-logo.jpg';
+import golfLogo from '../imgs/brands/golf-logo.jpg';
+import avatar from '../imgs/personal/profile-toon.jpg';
 
 const brandLogos = [cutLogo, hihoLogo, viceLogo, golfLogo, empireLogo];
 const desc = `As a self taught programmer, artist and mathematician, 

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import MainLink from './MainLink.jsx';
 import socials from '../config/socials';
 import SocialButton from './SocialButton.jsx';
-import { memberExpression } from '@babel/types';
 const {socialLinks, SocialContainer} = socials;
 
 const navLinks = [
@@ -24,17 +23,21 @@ const HeaderContainer = styled.div`
   align-items: center;
   width: 100vw;
   background: ${props => props.primaryColor || 'yellow'};
+  color: white;
   position: fixed;
   text-align: center;
   justify-content: center;
   margin: 0;
   height: 80px;
   z-index: 99;
+  a {
+    color: white;
+  }
 `;
 
 function MainNav({ theme, mobile }) {
   return (
-    <HeaderContainer primaryColor={theme[0]}>
+    <HeaderContainer primaryColor={theme[3]}>
       <NavContainer>
         {navLinks.map(link =>
           <MainLink

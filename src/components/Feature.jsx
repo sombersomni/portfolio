@@ -7,7 +7,8 @@ import SocialButton from './SocialButton.jsx';
 import ContactModal from './ContactModal.jsx';
 //other
 import socials from '../config/socials';
-const {socialLinks, SocialContainer} = socials;
+import data from '../data/about';
+const { socialLinks, SocialContainer } = socials;
 const FeatureContainer = styled.div`
     width: 250px;
     padding: 25px;
@@ -22,7 +23,7 @@ const FeatureContainer = styled.div`
     z-index: 10;
 `;
 
-const FeatureButton = styled.button`
+const FeatureButton = styled.a`
     padding: 5px 15px;
     border-radius: 5px;
     background: ${props => props.primaryColor || 'white'};
@@ -53,10 +54,13 @@ const ButtonContainer = styled.div`
     justify-content: center;
 `;
 
-function Feature({theme, mobile}) {
+const { email, subject } = data;
+
+function Feature({ theme, mobile }) {
     const [open, setOpen] = useState(false);
     return (
         <FeatureContainer primaryColor={theme[1]}>
+            <InteractiveBG />
             <ContactModal theme={theme} mobile={mobile} setOpen={setOpen} open={open} />
             <div>
                 <h3>
@@ -66,9 +70,9 @@ function Feature({theme, mobile}) {
                 </h3>
                 <p>A self taught programmer, artist and mathematician</p>
                 <ButtonContainer>
-                    <FeatureButton 
-                        primaryColor={theme[1]}
-                        onClick={() => { setOpen(true) }}>
+                    <FeatureButton
+                        href={`mailto:${email}?subject=${subject}`}
+                        primaryColor={theme[1]}>
                         Hire Me
                     </FeatureButton>
                     <a href="#">
@@ -91,7 +95,7 @@ function Feature({theme, mobile}) {
         </FeatureContainer>
     );
 }
-function mapStateToProps({theme, mobile}) {
+function mapStateToProps({ theme, mobile }) {
     return {
         theme,
         mobile

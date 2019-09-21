@@ -12,7 +12,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode, faTimes, faServer, faDatabase, faPlus, faBrain, faChartPie } from '@fortawesome/pro-regular-svg-icons'
 import { faFilePdf, faChartScatter, faHorizontalRule, faProjectDiagram } from '@fortawesome/pro-light-svg-icons'
 import { faGithub, faVimeoV } from '@fortawesome/free-brands-svg-icons';
-// import logo from './logo.svg';
+
 import './App.css';
 library.add(
   faChevronDown,
@@ -62,7 +62,7 @@ function mapDispatchToProps(dispatch) {
   function resizeTracker(e) {
     const { innerWidth } = e ? e.target : window
     dispatch({type: 'UPDATE_WIDTH', payload: innerWidth});
-    if (innerWidth <= 600) {
+    if (innerWidth <= 700) {
       dispatch({ type: 'UPDATE_MOBILE', payload: true })
     } else {
       dispatch({ type: 'UPDATE_MOBILE', payload: false })
@@ -72,8 +72,8 @@ function mapDispatchToProps(dispatch) {
     const { scrollY } = window;
     dispatch({type: 'UPDATE_SCROLL_Y', payload: scrollY});
   }
-  const dResizeTracker = debounce(resizeTracker, 100);
-  const tScrollTracker = throttle(scrollTracker, 200);
+  const dResizeTracker = debounce(resizeTracker, 60);
+  const tScrollTracker = throttle(scrollTracker, 100);
   return {
     dResizeTracker,
     tScrollTracker

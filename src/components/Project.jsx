@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Capsule from './Capsule.jsx';
-import { Transition } from 'react-spring/renderprops'
+//import { Transition } from 'react-spring/renderprops'
 
 const ProjectContainer = styled.div`
     display: flex;

@@ -1,63 +1,25 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 //external scripts
 import startPlane from '../scripts/plane';
 
 //components
 import Capsule from './Capsule.jsx';
-//data
 //animation
-const fadeOut = keyframes`
-  0% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0;
-  }
-`;
-const fadeIn = keyframes`
-  0% {
-      opacity: 0;
-      transform: translateY(10px);
-  }
-  100% {
-      opacity: 1;
-      transform: translateY(0px);
-  }
-`;
-const linearReg = keyframes`
-  0% {
-    transform: rotate(0deg);
-    color: rgba(255,0,0,1);
-  }
-  40% {
-      transform: translate(0,-40px) rotate(-60deg);
-      color: rgba(200,55,0,1);
-  }
-  70% {
-    transform: translate(0,-45px) rotate(-35deg);
-    color: rgba(0,255,10,1);
-  }
-  80% {
-    transform: translate(0,-38px) rotate(-40deg);
-    color: rgba(0,255,50,1);
-  }
-  90% {
-    transform: translate(0,-34px) rotate(-30deg);
-    color: rgba(0,255,50,1);
-  }
-  100% {
-    transform: translate(0,-35px) rotate(-32deg);
-    color: rgba(0,255,50,1);
-  }
-`;
+import { fadeIn, linearReg } from './animations/basic';
 
 const SkillFeatureContainer = styled.div`
+    width: 100%;
+    height: inherit;
     display: flex;
-    flex-direction: column;
+    flex-direction: ${props => props.mobile ? "column" : "row"};
     align-items: center;
-    animation: ${props => props.time}ms ${fadeIn} ease-out both;
+    animation: ${props => props.time || 1000}ms ${fadeIn} ease-out both;
+    h1 {
+        color: yellow;
+    }
+    padding-bottom: 50px;
 `;
 
 const Description = styled.p`
@@ -68,6 +30,15 @@ const Description = styled.p`
         font-size: 2em;
         color: yellow;
     }
+`;
+
+const DescContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: ${props => props.mobile ? "100%" : "50%"};
 `;
 
 const SkillSets = styled.div`
@@ -99,12 +70,21 @@ const LineContainer = styled.div`
     z-index: 10;
     animation: 2s ${linearReg} ease-in both;
 `;
-export default function SkillFeature({ title, icon, description, skillsets, theme, choice }) {
+
+const TitleContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: ${props => props.mobile ? "100%" : "45%"};
+    min-width: 200px;
+`;
+export default function SkillFeature({ title, icon, description, skillsets, theme, choice, mobile }) {
     useEffect(() => {
-    }, [choice]); 
+    }, [choice]);
 
     const planeInit = useCallback(node => {
-        if(node !== null) {
+        if (node !== null) {
             startPlane(node, theme[1]);
         }
     })
@@ -155,13 +135,19 @@ export default function SkillFeature({ title, icon, description, skillsets, them
         }
     }
     return (
-        <SkillFeatureContainer time={1000}>
-            <h1 style={{ color: 'yellow' }}>{title}</h1>
-            {createIcons(title, icon)}
-            <SkillSets>
-                {skillsets.map((skill, i) => <Capsule key={skill} label={skill} i={i} show={true} />)}
-            </SkillSets>
-            <Description>{description}</Description>
+        <SkillFeatureContainer
+            time={1000}
+            mobile={mobile}>
+            <TitleContainer mobile={mobile}>
+                <h1>{title}</h1>
+                {createIcons(title, icon)}
+                <SkillSets>
+                    {skillsets.map((skill, i) => <Capsule key={skill} label={skill} i={i} show={true} />)}
+                </SkillSets>
+            </TitleContainer>
+            <DescContainer mobile={mobile}>
+                <Description time={2000}>{description}</Description>
+            </DescContainer>
         </SkillFeatureContainer>
     )
 }

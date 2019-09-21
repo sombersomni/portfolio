@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 //imgs
-import reactLogo from '../imgs/react-logo.png'
+import reactLogo from '../imgs/brands/react-logo.png'
 const BioContainer = styled.div`
+    color: white;
     width: 100vw;
     height: auto;
     display: flex;
@@ -47,17 +48,25 @@ const Bio = styled.div`
     align-items: center;
     flex-direction: ${props => props.mobile ? 'column' : 'row'};
 `;
-function BioFooter({ description, src, theme, mobile }) {
 
+const ReactLogoStyle = {
+    fontFamily: 'Archivo Black, sans-serif', 
+    color: '#00B9CA', 
+    textTransform: 'uppercase'
+};
+
+function BioFooter({ description, src, theme, mobile }) {
+    
     return (
         <BioContainer
             mobile={mobile}
-            primaryColor={theme[0]}>
+            primaryColor={theme[3]}>
             
             <Bio mobile={mobile}>
                 <Avatar
                     secondaryColor={theme[1]}>
                     <img
+                        alt="Somber Somni avatar"
                         src={src}
                         height={250}
                         style={{ transform: 'translate(-20px, 0px)' }} />
@@ -69,7 +78,7 @@ function BioFooter({ description, src, theme, mobile }) {
 
             </Bio>
             <Footer>
-                <FooterMessage>This site was made using <span style={{fontFamily: 'Archivo Black, sans-serif', color: '#00B9CA', textTransform: 'uppercase'}}>
+                <FooterMessage>This site was made using <span style={ReactLogoStyle}>
                     <div><p>React</p><img src={reactLogo} style={{height:50}}/></div>
                     </span> and ☕</FooterMessage>
                 <EndFooter>

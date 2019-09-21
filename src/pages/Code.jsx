@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 //components
-import { Container, FeatureContainer } from '../components/Containers.jsx';
+import { Container } from '../components/Containers.jsx';
 import CurrentWork from '../components/CurrentWork.jsx';
 import Project from '../components/Project.jsx';
 import projects from '../data/projects';
-import DropSelect from '../components/DropSelect.jsx';
+//import DropSelect from '../components/DropSelect.jsx';
 
 const Projects = styled.div`
     width: ${props => props.mobile ? '100%' : '25%'};
@@ -35,7 +35,7 @@ const ProjContainer = styled.div`
     overflow-y: scroll;
 `;
 
-const ProjectFilters = styled.div``;
+//const ProjectFilters = styled.div``;
 
 function Code({mobile}) {
     const [projIndex, setCurrentProject] = useState(0);

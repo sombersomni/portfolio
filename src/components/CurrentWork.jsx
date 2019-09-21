@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import ArrowButton from './ArrowButton.jsx';
+import React from 'react';
 import styled from 'styled-components';
 import { OutlineCapsule } from './Capsule.jsx';
 

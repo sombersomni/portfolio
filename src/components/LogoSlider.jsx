@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Trail } from 'react-spring/renderprops'
-import { useSpring, animated, interpolate } from 'react-spring'
+// import { useSpring, animated, interpolate } from 'react-spring'
 
 const SlideContainer = styled.div`
     width: 100vw;
@@ -27,14 +27,14 @@ function LogoSlider({ brands, mobile, screenWidth, scrollYPos, duration }) {
     const width = 200;
     const [elReached, setElReached] = useState(false);
     const slideRef = useRef(null);
-    const time = (duration || 4000);
-    const { o, x } = useSpring({
-        config: { duration: 1000, delay: 3000 },
-        from: { o: 0, x: 0 },
-        reset: true,
-        o: 1,
-        x: -width
-    });
+    // const time = (duration || 4000);
+    // const { o, x } = useSpring({
+    //     config: { duration: 1000, delay: 3000 },
+    //     from: { o: 0, x: 0 },
+    //     reset: true,
+    //     o: 1,
+    //     x: -width
+    // });
 
     useEffect(() => {
         console.log(slideRef.current.offsetTop, scrollYPos);
