@@ -27,7 +27,7 @@ export default function Home() {
     return (
         <Container>
           <FeatureContainer style={{ overflow: "hidden" }}>
-            {/* <Feature /> */}
+            <Feature />
             <InteractiveBG />
           </FeatureContainer>
           <Skills />

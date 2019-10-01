@@ -12,14 +12,15 @@ const { socialLinks, SocialContainer } = socials;
 const FeatureContainer = styled.div`
     width: 250px;
     padding: 25px;
-    background: yellow;
     position: absolute;
+    background: rgba(70, 80, 125,0.4);
+    border: 2px solid white;
     border-radius: 10%;
+    color: white;
     top: 50%;
     left: 50%;
     margin-top: 50px;
     transform: translate(-50%,-50%);
-    box-shadow: 5px 5px ${props => props.primaryColor || 'white'};
     z-index: 10;
 `;
 
@@ -30,7 +31,7 @@ const FeatureButton = styled.a`
     border: none;
     margin: 10px 5px;
     &:hover {
-        box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.2);
+        box-shadow: 0px 0px 1px 1px rgba(70, 80, 125,0.2);
     }
 `;
 
@@ -40,6 +41,7 @@ const Resume = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    color: white;
     transition: opacity 1s;
     opacity: 1;
     &:hover {
@@ -59,13 +61,13 @@ const { email, subject } = data;
 function Feature({ theme, mobile }) {
     const [open, setOpen] = useState(false);
     return (
-        <FeatureContainer primaryColor={theme[1]}>
+        <FeatureContainer primaryColor={theme[3]}>
             <ContactModal theme={theme} mobile={mobile} setOpen={setOpen} open={open} />
             <div>
                 <h3>
-                    <span style={{ color: theme[1] }}>S</span>omber
+                    SOMBER
                     <br />
-                    <span style={{ color: theme[1] }}>S</span>omni
+                    SOMNI
                 </h3>
                 <p>A self taught programmer, artist and mathematician</p>
                 <ButtonContainer>
@@ -77,7 +79,8 @@ function Feature({ theme, mobile }) {
                     <a href="#">
                         <Resume>
                             <FontAwesomeIcon size='2x' icon={['fal', 'file-pdf']} />
-                            <p style={{ fontSize: '0.8em' }}>Download Resume PDF</p>
+                            <p style={{ 
+                                fontSize: '0.8em'}}>Download Resume PDF</p>
                         </Resume>
                     </a>
 
@@ -85,7 +88,7 @@ function Feature({ theme, mobile }) {
                 <SocialContainer>
                     {socialLinks.map(social =>
                         <SocialButton
-                            color={theme[3]}
+                            color={'white'}
                             key={social.name}
                             social={social.name}
                             link={social.link} />)}

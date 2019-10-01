@@ -54,7 +54,7 @@ function LogoSlider({ brands, mobile, screenWidth, scrollYPos, duration }) {
                     {brand => props =>  (<img
                         src={brand}
                         alt={brand}
-                        width={mobile ? 100: width}
+                        width={width}
                         height={'auto'}
                         style={props}
                     />)}

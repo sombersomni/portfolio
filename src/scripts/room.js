@@ -195,9 +195,10 @@ function createChair(chairColor) {
 
 function createLamp(standColor, lampShadeColor) {
     const lamp = new THREE.Group();
+    const lampShadeMaterial = new THREE.MeshLambertMaterial({ color: lampShadeColor })
     const standMaterial = new THREE.MeshLambertMaterial({ color: standColor });
     const standGeo = new THREE.CylinderGeometry(2, 10, 4, 4, 1);
-    let stand = new THREE.Mesh(standGeo, standMaterial);
+    let stand = new THREE.Mesh(standGeo, lampShadeMaterial);
     lamp.add(stand);
     const lampHeight = 80;
     const poleGeo = new THREE.BoxGeometry(2, lampHeight, 2, 1, 1, 1);
@@ -206,7 +207,6 @@ function createLamp(standColor, lampShadeColor) {
     lamp.add(pole);
     const lampShadeGeo = new THREE.CylinderBufferGeometry(4, 15, 20, 4, 4, true);
     lampShadeGeo.translate(0, 80, 0);
-    const lampShadeMaterial = new THREE.MeshLambertMaterial({ color: lampShadeColor })
     let lampShade = new THREE.Mesh(lampShadeGeo, lampShadeMaterial);
     lamp.add(lampShade);
     lamp.rotation.y += Math.PI * 2 / 8;
@@ -323,24 +323,24 @@ export default function startEnvironment(canvas, bgColor) {
     const plant = createPlant(0xC78C9C, 0xFFB6C1, 0xB9E6EA);
     livingRoom.add(plant);
     //table
-    const coffeeTable = createCoffeeTable(0xFFB6C1, magTexture);
+    const coffeeTable = createCoffeeTable(bgColor, magTexture);
     livingRoom.add(coffeeTable);
-    const table = createTable(0xFBDDA2);
+    const table = createTable(bgColor);
     livingRoom.add(table);
     //chairs
-    const chair1 = createChair(0xC78C9C);
+    const chair1 = createChair(0xFFB6C1);
     chair1.rotation.y += Math.PI * 2 / 8;
     chair1.position.set(-10, 10, -25);
     livingRoom.add(chair1);
-    const chair2 = createChair(0xC78C9C);
+    const chair2 = createChair(0xFFB6C1);
     chair2.rotation.y -= Math.PI * 2 / 8;
     chair2.position.set(75, 10, -20);
     livingRoom.add(chair2);
     //lamp
-    const lamp = createLamp(0xFFB6C1, 0xEA8A9D);
+    const lamp = createLamp(0xFFB6C1, bgColor);
     livingRoom.add(lamp);
     livingRoom.rotation.y -= Math.PI * 2 / 8;
-    livingRoom.position.set(0, 10, -100);
+    livingRoom.position.set(-25, 10, -100);
     scene.add(livingRoom);
     camera.lookAt(new THREE.Vector3(0, 100, 0));
     anime({
