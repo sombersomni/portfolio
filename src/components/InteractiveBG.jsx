@@ -1,8 +1,7 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import styled from 'styled-components';
-
 //scripts
-import startEnvironment from '../scripts/field';
+import startEnvironment from '../scripts/room';
 
 const Container = styled.div`
     width: 100vw;
@@ -11,18 +10,28 @@ const Container = styled.div`
 `;
 
 export default function InteractiveBG() {
-    const canvasRef = useCallback((canvas) => {
+    const [width, setWidth] = useState(0);
+    const [height, setHeight] = useState(0);
+    const containerRef = useCallback(container => {
+        if(container) {
+            console.log(container);
+            setWidth(container.clientWidth);
+            setHeight(container.clientHeight);
+        }
+    });
+    const canvasRef = useCallback(canvas => {
         console.log("canvas", canvas);
         if(canvas) {
             startEnvironment(canvas);
         }
     })
     return (
-        <Container>
+        <Container ref={containerRef}>
             <canvas 
                 ref={canvasRef}
-                height={720}
-                width={1280}/>
+                height={height}
+                width={width > 1280 ? width : 1500}/>
         </Container>
     )
 }
+
