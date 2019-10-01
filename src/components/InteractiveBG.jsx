@@ -1,37 +1,36 @@
-import React, {useCallback, useState} from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 //scripts
 import startEnvironment from '../scripts/room';
 
 const Container = styled.div`
     width: 100vw;
     height: 100vh;
-    background: green;
+    background: #4D587A;
 `;
 
-export default function InteractiveBG() {
-    const [width, setWidth] = useState(0);
-    const [height, setHeight] = useState(0);
-    const containerRef = useCallback(container => {
-        if(container) {
-            console.log(container);
-            setWidth(container.clientWidth);
-            setHeight(container.clientHeight);
+function InteractiveBG({ screenWidth }) {
+    const canvasRef = useRef(null);
+
+    useEffect(() => {
+        if (canvasRef) {
+            console.log(canvasRef.current.innerWidth, canvasRef.innerHeight);
+            startEnvironment(canvasRef.current, 0x4D587A);
         }
-    });
-    const canvasRef = useCallback(canvas => {
-        console.log("canvas", canvas);
-        if(canvas) {
-            startEnvironment(canvas);
-        }
-    })
+    }, [screenWidth])
     return (
-        <Container ref={containerRef}>
-            <canvas 
+        <Container>
+            <canvas
                 ref={canvasRef}
-                height={height}
-                width={width > 1280 ? width : 1500}/>
+                style={{ zIndex: 1 }}
+                height={800}
+                width={screenWidth < 1280 ? screenWidth : 1500} />
         </Container>
     )
 }
 
+function mapStateToProps({ screenWidth }) {
+    return { screenWidth }
+}
+export default connect(mapStateToProps)(InteractiveBG);
