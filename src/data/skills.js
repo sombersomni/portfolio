@@ -1,30 +1,44 @@
-module.exports =  [
+module.exports = [
     {
-        title: 'UI/UX Developer',
+        title: 'Frontend Developer',
         icon: 'laptop-code',
-        description: 'Vestibulum dignissim massa semper lacus lacinia, ut consectetur leo ullamcorper. Mauris et consequat urna. Integer ornare, lacus sit amet blandit sodales, ante velit faucibus mauris, non dignissim elit mi nec tellus. Vivamus sit amet maximus dui, nec porta nisi. Pellentesque id imperdiet lectus, a posuere augue. Integer auctor odio et finibus faucibus. Vivamus ut rhoncus magna. Nam fermentum, nulla et condimentum posuere, felis sapien laoreet odio, vitae lacinia libero nunc quis nisl. Aliquam quis dolor urna. Morbi vitae elementum lorem, vel egestas libero.',
-        skillsets: [ 'html 5', 'CSS3', 'javascript', 'React', 'React Native', 'Vue', 'Mustache', 'Redux']
+        description: `As a frontend developer, I use the most cutting edge frameworks available on the market
+        such as React, Vue and Angular. Beautiful design is a critical focus for drawing in new customers, however I
+        would argue making the UI simple is the crux of the development process. My exprience ranges from creating small apps to large single page applications for
+        shopping. Let me bring your vision to live with clean animations, quick turnarounds and mobile friendly designs`,
+        skillsets: ['html 5', 'CSS3', 'javascript', 'React', 'React Native', 'Vue', 'Angular', 'Mustache', 'Redux']
 
     },
     {
         title: 'Backend Developer',
         icon: ['server', 'database'],
-        description: 'Morbi luctus, nisl et lacinia dictum, ipsum leo molestie sem, et lobortis lectus est aliquet nisl. In hac habitasse platea dictumst. Ut commodo semper mi sit amet feugiat. Suspendisse vehicula, orci a malesuada cursus, urna magna commodo mi, eget lobortis mauris urna eget dolor. Ut volutpat nisi tortor, vitae iaculis eros bibendum et. Proin porttitor gravida nulla nec volutpat. Duis interdum placerat leo, eget bibendum felis bibendum eget. Quisque vitae mauris pretium sapien lobortis elementum in ac ex. In blandit porttitor odio iaculis dignissim. Etiam lacinia orci in imperdiet fringilla. Sed condimentum ac ex non rutrum. In commodo ullamcorper condimentum. Quisque quis convallis justo. Phasellus sit amet ultrices orci.',
-        skillsets: [ 'NodeJS', 'Express', 'MongoDB', 'SQL', 'Python', 'GraphQL']
+        description: `Information is what drives and shapes your frontend. As a backend developer, controlling the flow of
+        information is the backbone of any great website. For servers, I typically use Nodejs to keep all my javascript
+        code uniform, but I frequently switch between different languages depending on the complexity of the server. For databases, 
+        I currently stick with no sql to avoid the tangled with of working with relational tables, but for legacy projects
+        I revert back to SQL as it still is a solid langauge for handling large data sets.`,
+        skillsets: ['NodeJS', 'Express', 'MongoDB', 'SQL', 'PostgreSQL', 'Python (flask, django)', 'GraphQL', 'ASP.NET', 'Apache Kafka']
 
     },
     {
         title: 'Data Science',
         icon: ['chart-scatter', 'chart-pie'],
-        description: 'Curabitur vel risus a diam fringilla venenatis. Sed sodales ligula sit amet diam commodo, vel condimentum felis laoreet. Donec ligula ipsum, dapibus ac nulla eu, luctus cursus urna. Nullam eros nunc, ultricies eget massa id, gravida ornare nulla. Nullam auctor purus vitae tellus interdum efficitur. Donec et nibh urna. Ut ac sem pulvinar, maximus ligula vitae, dignissim neque. Nunc aliquam arcu arcu, vel vulputate elit iaculis at. Etiam maximus libero eu massa fermentum congue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-        skillsets: [  ]
+        description: `Machine Learning is the new frontier for getting a better understanding of your data.
+        You can learn significant information about your customers, allowing you to predict future behavior 
+        based on past user patterns. We can now use these cutting edge algorithms to increase user interest
+        in your application and bring more customers, such as user recommendations and user demographic aggregation.`,
+        skillsets: ["Machine Learning", "Statistics", "Big Data", "Neural Networks(WIP)", "Tensorflow"]
 
     },
     {
-        title: 'animation',
-        icon: 'laptop-code',
-        description: 'Vestibulum dignissim massa semper lacus lacinia, ut consectetur leo ullamcorper. Mauris et consequat urna. Integer ornare, lacus sit amet blandit sodales, ante velit faucibus mauris, non dignissim elit mi nec tellus. Vivamus sit amet maximus dui, nec porta nisi. Pellentesque id imperdiet lectus, a posuere augue. Integer auctor odio et finibus faucibus. Vivamus ut rhoncus magna. Nam fermentum, nulla et condimentum posuere, felis sapien laoreet odio, vitae lacinia libero nunc quis nisl. Aliquam quis dolor urna. Morbi vitae elementum lorem, vel egestas libero.',
-        skillsets: [ 'html 5', 'CSS3', 'javascript', 'React', 'React Native', 'Vue', 'Mustache' ]
+        title: 'Animation',
+        description: `Animation can give your applicaiton new found life through fluid motions and user triggered transitions.
+        I find this skillset to be criminally underated, as it's application can excite your user base and
+        make your website more interesting. Website speed is incredibly important, so any time I bring animations
+        into a project, I make sure to account for download time and memory leaks. A mesmerizing website isn't good if it takes
+        an eternity to load your app. 
+        `,
+        skillsets: ['CSS3', 'javascript', 'Flash', 'SVG', 'Blender (WIP)']
 
     },
 ];

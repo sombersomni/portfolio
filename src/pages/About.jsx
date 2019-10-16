@@ -81,7 +81,7 @@ const Contact = styled.div`
     }
 `;
 
-const { bio, email, subject } = data;
+const { bio, altEmail, email, subject } = data;
 
 function About({ theme, mobile }) {
     const expandTime = 1000;
@@ -98,10 +98,12 @@ function About({ theme, mobile }) {
                     time={1000}
                     secondaryColor={theme[5]}>
                     <h1>Somber Somni</h1>
+                    <h4>Xavier Palin</h4>
                     <p>{bio}</p>
                     <Contact secondaryColor={theme[5]}>
                         <h4>For serious inqueries, email me at : <a href={`mailto:${email}?subject=${subject}`}>
-                            {email}</a></h4>
+                            {email}</a> or <a href={`mailto:${altEmail}?subject=${subject}`}>
+                            {altEmail}</a></h4>
                     </Contact>
                 </Info>
             </AboutContainer>

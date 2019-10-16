@@ -54,7 +54,7 @@ function Code({ mobile, theme }) {
     const [firstVisit, setFirstVisit] = useState(true);
     const [mouseActive, setMouseActive] = useState(true);
     let mouseTimeout;
-    const duration = 4000;
+    const duration = 2000;
     useEffect(() => {
         const dWheel = debounce(handleWheel, duration, { maxWait: duration + 1000, leading: true, trailing: false });
         window.addEventListener('wheel', dWheel);

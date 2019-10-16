@@ -18,8 +18,6 @@ const Counter = styled.div`
 `;
 
 export default function Project({ currentIndex, duration, headerImg, firstVisit, tagline, title, theme, type, websiteLink, isMobileFriendly, prevIndex, projects, mobile }) {
-    console.log('previndex : ', prevIndex, 'currentindex :', currentIndex)
-    
     return (
         <ProjectContainer>
             <Counter>

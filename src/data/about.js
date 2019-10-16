@@ -13,5 +13,6 @@ export default {
     students different ideas of what to use programming for and allows 
     them to pursue multiple career paths of their choosing.`,
     email: "sombersomni@gmail.com",
+    altEmail: "xavierjp1999@gmail.com",
     subject: "Let's work together"
 }

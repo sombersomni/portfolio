@@ -44,7 +44,7 @@ function LogoSlider({ brands, mobile, screenWidth, scrollYPos, duration }) {
     }, [scrollYPos])
     return (
         <SlideContainer ref={slideRef}>
-            <h1 style={{ fontFamily: 'Abel'}}>Brands I've Worked with</h1>
+            <h1 >Brands I've Worked with</h1>
             <LogoSliderContainer>
                 {elReached ? <Trail
                     items={brands}
