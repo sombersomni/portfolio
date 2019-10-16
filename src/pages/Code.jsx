@@ -7,7 +7,7 @@ import { debounce, throttle } from 'lodash';
 //components
 import Project from '../components/Projectv2.jsx';
 import projects from '../data/projects';
-import { displayMessage } from '../components/animations/advanced';
+import ProgressBar from '../components/ProgressBar.jsx';
 //import DropSelect from '../components/DropSelect.jsx';
 
 
@@ -50,16 +50,13 @@ const ScrollMessage = styled.div`
 `;
 
 function Code({ mobile, theme }) {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [prevIndex, setPrevIndex] = useState(0);
+    const [projectState, setProjectState] = useState({ currentIndex: 0, prevIndex: 0 });
     const [firstVisit, setFirstVisit] = useState(true);
-    const [prevTimeout, setPrevTimeout] = useState(null);
     const [mouseActive, setMouseActive] = useState(true);
     let mouseTimeout;
     const duration = 4000;
     useEffect(() => {
         const dWheel = debounce(handleWheel, duration, { maxWait: duration + 1000, leading: true, trailing: false });
-        const dHandleMouseMove = debounce(handleMouseMove, 500);
         window.addEventListener('wheel', dWheel);
         window.addEventListener('mousemove', handleMouseMove);
         return () => {
@@ -68,9 +65,7 @@ function Code({ mobile, theme }) {
         }
     }, []);
     const handleMouseMove = e => {
-        console.log('is active : ', mouseActive);
         clearTimeout(mouseTimeout);
-        console.log('mouse active');
         setMouseActive(false);
         mouseTimeout = setTimeout(() => {
             console.log('mouse deactivate');
@@ -79,21 +74,22 @@ function Code({ mobile, theme }) {
 
     }
     const handleWheel = e => {
-        clearTimeout(prevTimeout);
         if (firstVisit) {
             setFirstVisit(false);
         }
-        let prevIndexTimeout;
         if (e.deltaY > 0) {
-            prevIndexTimeout = setTimeout(() => setPrevIndex(pIndex => pIndex < projects.length - 1 ? pIndex + 1 : projects.length - 1), duration - duration / 4);
-            setPrevTimeout(prevIndexTimeout);
-            setCurrentIndex(pIndex => pIndex < projects.length - 1 ? pIndex + 1 : projects.length - 1);
+            setProjectState(prevState => ({ 
+                currentIndex : prevState.currentIndex < projects.length - 1 ? prevState.currentIndex + 1 : projects.length - 1,
+                prevIndex: prevState.currentIndex
+            }));
         } else if (e.deltaY < 0) {
-            prevIndexTimeout = setTimeout(() => setPrevIndex(pIndex => pIndex >= 1 ? pIndex - 1 : 0), duration - duration / 4);
-            setPrevTimeout(prevIndexTimeout);
-            setCurrentIndex(pIndex => pIndex >= 1 ? pIndex - 1 : 0);
+            setProjectState(prevState => ({ 
+                currentIndex : prevState.currentIndex >= 1 ? prevState.currentIndex - 1 : 0,
+                prevIndex: prevState.currentIndex
+            }));
         }
     }
+    const {currentIndex, prevIndex} = projectState;
     return (
         <MainContainer>
             {/* {currentIndex >= 1 ? (
@@ -121,7 +117,8 @@ function Code({ mobile, theme }) {
                 currentIndex={currentIndex}
                 projects={projects}
                 duration={duration}
-                firstVisit={firstVisit} />
+                firstVisit={firstVisit}
+                mobile={mobile} />
             <Transition
                 items={mouseActive}
                 from={{ opacity: 0, bottom: 30 }}
@@ -139,6 +136,10 @@ function Code({ mobile, theme }) {
                         }} />
                 </ScrollMessage>)}
             </Transition>
+            <ProgressBar
+                currentIndex={currentIndex}
+                projectsLength={projects.length}
+                primaryColor={theme[1]} />
         </MainContainer>
     );
 }
