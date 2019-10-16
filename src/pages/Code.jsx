@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Transition } from 'react-spring/renderprops';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { debounce } from 'lodash';
+import { debounce, throttle } from 'lodash';
 //components
 import Project from '../components/Projectv2.jsx';
 import projects from '../data/projects';
@@ -38,16 +39,14 @@ const ScrollMessage = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 95;
-    opacity: 1;
     cursor: pointer;
     background: white;
     border-radius: 25px;
     padding: 0px 10px;
-    animation: 5000ms ${displayMessage()} ease-in-out both; 
+    width: 100px;
 `;
 
 function Code({ mobile, theme }) {
@@ -55,29 +54,33 @@ function Code({ mobile, theme }) {
     const [prevIndex, setPrevIndex] = useState(0);
     const [firstVisit, setFirstVisit] = useState(true);
     const [prevTimeout, setPrevTimeout] = useState(null);
-    const [mouseActive, setMouseActive] = useState(false);
+    const [mouseActive, setMouseActive] = useState(true);
+    let mouseTimeout;
     const duration = 4000;
     useEffect(() => {
         const dWheel = debounce(handleWheel, duration, { maxWait: duration + 1000, leading: true, trailing: false });
         const dHandleMouseMove = debounce(handleMouseMove, 500);
         window.addEventListener('wheel', dWheel);
-        window.addEventListener('mousemove', dHandleMouseMove);
+        window.addEventListener('mousemove', handleMouseMove);
         return () => {
             window.removeEventListener('wheel', dWheel);
-            window.removeEventListener('mousemove', dHandleMouseMove);
+            window.removeEventListener('mousemove', handleMouseMove);
         }
     }, []);
     const handleMouseMove = e => {
-        const x = e.clientX;
-        const y = e.clientY;
-        console.log("Coords :", x,y);
+        console.log('is active : ', mouseActive);
+        clearTimeout(mouseTimeout);
+        console.log('mouse active');
+        setMouseActive(false);
+        mouseTimeout = setTimeout(() => {
+            console.log('mouse deactivate');
+            setMouseActive(true);
+        }, 10000);
+
     }
     const handleWheel = e => {
-        console.log(e);
-        if(prevTimeout) {
-            clearTimeout(prevTimeout);
-        }
-        if(firstVisit) {
+        clearTimeout(prevTimeout);
+        if (firstVisit) {
             setFirstVisit(false);
         }
         let prevIndexTimeout;
@@ -115,21 +118,27 @@ function Code({ mobile, theme }) {
                 {...projects[currentIndex]}
                 prevIndex={prevIndex}
                 theme={theme}
-                currentIndex={currentIndex} 
+                currentIndex={currentIndex}
                 projects={projects}
                 duration={duration}
                 firstVisit={firstVisit} />
-            <ScrollMessage>
-                <p>Scroll to view Projects</p>
-                <FontAwesomeIcon 
-                    size="2x" 
-                    icon={['fas', 'caret-down']}
-                    style={{
-                        position: 'absolute',
-                        bottom: -18,
-                        color: 'white'
-                    }} />
-            </ScrollMessage>
+            <Transition
+                items={mouseActive}
+                from={{ opacity: 0, bottom: 30 }}
+                enter={{ opacity: 1, bottom: 60 }}
+                leave={{ opacity: 0, bottom: 30 }}>
+                {mouseActive => mouseActive && (props => <ScrollMessage style={{ ...props }}>
+                    <p>Scroll to view Projects</p>
+                    <FontAwesomeIcon
+                        size="2x"
+                        icon={['fas', 'caret-down']}
+                        style={{
+                            position: 'absolute',
+                            bottom: -18,
+                            color: 'white'
+                        }} />
+                </ScrollMessage>)}
+            </Transition>
         </MainContainer>
     );
 }
