@@ -8,7 +8,7 @@ export default [
         desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
         tagline: "A movie website built using MovieDB API",
         title: "Pick Flicks",
-        type: "Website",
+        type: ["Website", "App"],
         websiteLink: "https://pick-flicks-app.herokuapp.com/"
     },
     {

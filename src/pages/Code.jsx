@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { throttle } from 'lodash';
 //components
 import { Container } from '../components/Containers.jsx';
 import CurrentWork from '../components/CurrentWork.jsx';
-import Project from '../components/Project.jsx';
+import Project from '../components/Projectv2.jsx';
 import projects from '../data/projects';
 //import DropSelect from '../components/DropSelect.jsx';
 
-const Projects = styled.div`
-    width: ${props => props.mobile ? '100%' : '25%'};
-    min-width: 200px;
-    height: 100vh;
-    max-height: 100vh;
-    border-left: 2px solid black;
-`;
 
 const MainContainer = styled.div`
     display: ${props => props.mobile ? 'block' : 'flex'};
@@ -25,7 +19,7 @@ const MainContainer = styled.div`
 `;
 
 const ProjContainer = styled.div`
-    position: ${props => props.mobile ? "relative" :"-webkit-sticky"};
+    position: ${props => props.mobile ? "relative" : "-webkit-sticky"};
     position:  ${props => props.mobile ? "relative" : "sticky"};
     width: 100%; 
     min-width: 200px;
@@ -37,34 +31,35 @@ const ProjContainer = styled.div`
 
 //const ProjectFilters = styled.div``;
 
-function Code({mobile}) {
-    const [projIndex, setCurrentProject] = useState(0);
+function Code({ mobile, theme }) {
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [filterBy, setFilterBy] = useState('none');
-    const projectsFiltered =  filterBy === 'none' ? projects : projects.filter(proj => proj.type.toLowerCase().includes(filterBy));
+    const projectsFiltered = filterBy === 'none' ? projects : projects.filter(proj => proj.type.toLowerCase().includes(filterBy));
+
+    function handleWheel(e) {
+        console.log('activated wheel');
+        if (e.deltaY > 0) {
+            console.log('go down');
+            setCurrentIndex(currentIndex < projects.length - 1 ? currentIndex + 1 : projects.length - 1);
+        } else if (e.deltaY < 0) {
+            console.log('go up');
+            setCurrentIndex(currentIndex >= 1 ? currentIndex - 1 : 0);
+        }
+    }
+
+    const throttledWheel = throttle(handleWheel, 5000);
+    useEffect(() => {
+        window.addEventListener('wheel', throttledWheel);
+        return () => {
+            window.removeEventListener('wheel', throttledWheel);
+        }
+    }, [])
     return (
         <Container>
-            <MainContainer mobile={mobile} >
-                <CurrentWork {...projects[projIndex]} mobile={mobile} />
-                <Projects mobile={mobile}>
-                    <h3>Projects</h3>
-                    <select onChange={e => { setFilterBy(e.target.value) }}>
-                        <option value="none">None</option>
-                        <option value="app">App</option>
-                        <option value="module">Module</option>
-                        <option value="website">Website</option>
-                    </select>
-                    <ProjContainer mobile={mobile}>
-                        {projects ? projectsFiltered.map((project, i) =>
-                            <Project
-                                key={i.toString()}
-                                {...project}
-                                chosen={projIndex === i}
-                                i={i}
-                                setCurrentProject={setCurrentProject} />)
-                            : null}
-                    </ProjContainer>
-                </Projects>
-            </MainContainer>
+            <Project
+                {...projects[currentIndex]}
+                theme={theme}
+                currentIndex={currentIndex} />
         </Container>
     );
 }

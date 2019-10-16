@@ -20,7 +20,7 @@ text-transform: capitalize;
 `;
 const DefaultContainer = styled.div`
     ${defaultStyle}
-    background: yellow;
+    background: ${props => props.color || "yellow"};
     font-size: 0.8em;
     animation: 1s ${fadeIn} ${props => props.i * 100}ms ease-out both;
 `;
@@ -40,10 +40,14 @@ const OutlineContainer = styled.a`
     border: 2px solid white;
     border-radius: 25px;
 `;
-export default function Capsule({ label, show, setChoice, selected, theme, i }) {
+export default function Capsule({ color, label, show, setChoice, selected, theme, i }) {
     return (
         <div>
-            {show ? <DefaultContainer i={i}> {label} </DefaultContainer> :
+            {show ? 
+                <DefaultContainer 
+                i={i}
+                color={color}> {label} 
+                </DefaultContainer> :
                 <CapsuleContainer
                     selected={selected}
                     primaryColor={theme[0]}
