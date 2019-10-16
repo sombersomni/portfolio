@@ -43,7 +43,6 @@ export default function Project({ currentIndex, duration, headerImg, firstVisit,
                 menuShow={false}/> : null) }
                 { !firstVisit ? projects.map((proj, i) => i === currentIndex ? 
                 <ProjectMenu 
-                    firstVisit={currentIndex === 0}
                     key={title + i.toString()}
                     duration={duration}
                     tagline={tagline}

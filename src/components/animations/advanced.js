@@ -16,3 +16,24 @@ export const menuShow = function (color, endOpacity) {
     }
     `
 };
+
+export const displayMessage = function (pos="bottom") {
+    return keyframes`
+    0% {
+        opacity: 0;
+        bottom: 30px;
+    }
+    25% {
+        opacity: 1;
+        bottom: 60px;
+    }
+    50% {
+        opacity: 1;
+        bottom: 60px;
+    }
+    100% {
+        opacity: 0;
+        bottom: 30px;
+    }
+    `
+};

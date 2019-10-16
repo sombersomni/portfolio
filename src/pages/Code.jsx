@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { throttle, debounce } from 'lodash';
+import { debounce } from 'lodash';
 //components
-import { Container } from '../components/Containers.jsx';
 import Project from '../components/Projectv2.jsx';
 import projects from '../data/projects';
+import { displayMessage } from '../components/animations/advanced';
 //import DropSelect from '../components/DropSelect.jsx';
 
 
 const MainContainer = styled.div`
     margin: 0;
+    &::-webkit-scrollbar { 
+        display: none; 
+    }
 `;
 
 // const IconContainer = styled.div`
@@ -37,15 +40,14 @@ const ScrollMessage = styled.div`
     justify-content: center;
     bottom: 50px;
     left: 50%;
-    transform: translateX(-50%), scale(1);
+    transform: translateX(-50%);
     z-index: 95;
-    color: white;
     opacity: 1;
     cursor: pointer;
-    &:hover {
-        transform: scale(1.1);
-        opacity: 0.8;
-    }
+    background: white;
+    border-radius: 25px;
+    padding: 0px 10px;
+    animation: 5000ms ${displayMessage()} ease-in-out both; 
 `;
 
 function Code({ mobile, theme }) {
@@ -53,15 +55,23 @@ function Code({ mobile, theme }) {
     const [prevIndex, setPrevIndex] = useState(0);
     const [firstVisit, setFirstVisit] = useState(true);
     const [prevTimeout, setPrevTimeout] = useState(null);
+    const [mouseActive, setMouseActive] = useState(false);
     const duration = 4000;
     useEffect(() => {
-        const dWheel = debounce(handleWheel, 1000, { maxWait: 2000, leading: true, trailing: false });
+        const dWheel = debounce(handleWheel, duration, { maxWait: duration + 1000, leading: true, trailing: false });
+        const dHandleMouseMove = debounce(handleMouseMove, 500);
         window.addEventListener('wheel', dWheel);
+        window.addEventListener('mousemove', dHandleMouseMove);
         return () => {
             window.removeEventListener('wheel', dWheel);
+            window.removeEventListener('mousemove', dHandleMouseMove);
         }
     }, []);
-
+    const handleMouseMove = e => {
+        const x = e.clientX;
+        const y = e.clientY;
+        console.log("Coords :", x,y);
+    }
     const handleWheel = e => {
         console.log(e);
         if(prevTimeout) {
@@ -111,7 +121,14 @@ function Code({ mobile, theme }) {
                 firstVisit={firstVisit} />
             <ScrollMessage>
                 <p>Scroll to view Projects</p>
-                <FontAwesomeIcon size="2x" icon={['fal', 'mouse']} />
+                <FontAwesomeIcon 
+                    size="2x" 
+                    icon={['fas', 'caret-down']}
+                    style={{
+                        position: 'absolute',
+                        bottom: -18,
+                        color: 'white'
+                    }} />
             </ScrollMessage>
         </MainContainer>
     );

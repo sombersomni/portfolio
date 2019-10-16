@@ -8,14 +8,15 @@ import Code from './pages/Code.jsx';
 import About from './pages/About.jsx';
 import MainNav from './components/MainNav.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faChevronUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode, faTimes, faServer, faDatabase, faPlus, faBrain, faChartPie } from '@fortawesome/pro-regular-svg-icons'
-import { faFilePdf, faChartScatter, faHorizontalRule, faProjectDiagram, faMobileAlt, faMouse } from '@fortawesome/pro-light-svg-icons'
+import { faFilePdf, faChartScatter, faHorizontalRule, faProjectDiagram, faMobileAlt } from '@fortawesome/pro-light-svg-icons';
+import { faSortDown} from '@fortawesome/pro-duotone-svg-icons';
 import { faGithub, faVimeoV } from '@fortawesome/free-brands-svg-icons';
 
 import './App.css';
 library.add(
-  faMouse,
+  faCaretDown,
   faMobileAlt,
   faChevronDown,
   faChevronUp,

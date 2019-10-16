@@ -12,9 +12,9 @@ justify-content: center;
 color: white;
 width: 100%;
 height: 100%;
-background: rgba(${props => props.primaryColor}, 0.5);
+background: rgba(${props => props.primaryColor}, 0.6);
 z-index: ${props => props.old ? 80 : 81};
-animation: ${props => props.menuShow ? props.duration : props.duration / 4}ms ${props => props.menuShow ? 0 : props.duration - props.duration / 4}ms ${props => props.firstTime ? nothing : (props.menuShow ? menuShow(props.primaryColor, 0.5) : fadeOut)} ease-in-out both
+animation: ${props => props.menuShow ? props.duration : props.duration / 4}ms ${props => props.firstTime ? nothing : (props.menuShow ? menuShow(props.primaryColor, 0.6) : fadeOut)} ease-in-out both
 transition: background 1s;
 `;
 
@@ -22,7 +22,6 @@ const Info = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    max-width: 400px;
     width: 300px;
     min-width: 200px;
     max-height: 300px;
@@ -75,9 +74,9 @@ export default function ProjectMenu({ primaryColor, tagline, websiteLink, type, 
             menuShow={menuShow}
             old={old}
             primaryColor={color /*replicates theme[3] */}
-          >
+        >
             <Info
-            primaryColor={color /*replicates theme[3] */}>
+                primaryColor={color /*replicates theme[3] */}>
                 <h1 style={{
                     fontFamily: "Beth Ellen",
                     marginBottom: -10
