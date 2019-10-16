@@ -10,11 +10,12 @@ import MainNav from './components/MainNav.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode, faTimes, faServer, faDatabase, faPlus, faBrain, faChartPie } from '@fortawesome/pro-regular-svg-icons'
-import { faFilePdf, faChartScatter, faHorizontalRule, faProjectDiagram, faMobileAlt } from '@fortawesome/pro-light-svg-icons'
+import { faFilePdf, faChartScatter, faHorizontalRule, faProjectDiagram, faMobileAlt, faMouse } from '@fortawesome/pro-light-svg-icons'
 import { faGithub, faVimeoV } from '@fortawesome/free-brands-svg-icons';
 
 import './App.css';
 library.add(
+  faMouse,
   faMobileAlt,
   faChevronDown,
   faChevronUp,

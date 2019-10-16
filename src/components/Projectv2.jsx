@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Capsule from './Capsule.jsx';
+import ProjectMenu from './ProjectMenu.jsx';
+
 const ProjectContainer = styled.div`
     position: relative;
     width: 100vw;
@@ -18,56 +18,6 @@ const HeaderImg = styled.div`
     height:  100%;
 `;
 
-const Menu = styled.div`
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(${props => props.primaryColor}, 0.6);
-    color: white;
-    width: 100%;
-    height: 100%;
-`;
-
-const Info = styled.div`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    min-width: 200px;
-    height: 300px;
-    border: 4px solid white;
-    border-radius: 25px;
-    z-index: 90;
-    padding: 25px;
-`;
-
-const CapsuleContainer = styled.div`
-    width: 100px;
-`;
-
-const Capsules = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100%;
-    color: ${props => props.primaryColor || 'black'}
-`;
-
-const CapButton = styled.button`
-    background: rgba(0,0,0,0);
-    border-radius: 25px;
-    border: 2px solid white;
-    color: white;
-    margin: 5px;
-    padding: 5px 10px;
-`;
-
-const MobileMarker = styled.div`
-    margin-top: 10px;
-`;
-
 const Counter = styled.div`
     position: absolute;
     top: 100px;
@@ -76,72 +26,35 @@ const Counter = styled.div`
     color: white;
 `;
 
-export default function Project({ currentIndex, desc, headerImg, tagline, title, theme, type, websiteLink }) {
-
+export default function Project({ currentIndex, duration, headerImg, firstVisit, tagline, title, theme, type, websiteLink, isMobileFriendly, prevIndex, projects}) {
+    console.log("prev: " + prevIndex, "current : " + currentIndex)
     return (
         <ProjectContainer>
             <Counter>
                 <h1>{currentIndex + 1}.</h1>
             </Counter>
-            <FontAwesomeIcon
-                size="2x"
-                icon={['fas', 'chevron-up']}
-                style={{
-                    position: "absolute",
-                    top: 100,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    zIndex: 95,
-                    color: "white"
-                }} />
-            <FontAwesomeIcon
-                size="2x"
-                icon={['fas', 'chevron-down']}
-                style={{
-                    position: "absolute",
-                    bottom: 50,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    zIndex: 95,
-                    color: "white"
-                }} />
-            <HeaderImg src={headerImg}>
-                <Menu primaryColor={"27,27,58" /*replicates theme[3] */}>
-                    <Info>
-                        <h1 style={{
-                            fontFamily: "Beth Ellen",
-                            marginBottom: -10
-                        }}>{title}</h1>
-                        <p style={{ padding: "0px 25px" }}>{tagline}</p>
-                        <Capsules primaryColor={theme[3]}>
-                            {Array.isArray(type) ? type.map((each, i) =>
-                                (<CapsuleContainer key={each}>
-                                    <Capsule
-                                        color='white'
-                                        i={i}
-                                        show={true}
-                                        label={each} />
-                                </CapsuleContainer>)) :
-                                <CapsuleContainer>
-                                    <Capsule
-                                        i={0}
-                                        color='white'
-                                        show={true}
-                                        label={type} />
-                                </CapsuleContainer>
-                            }
-                        </Capsules>
-                        <a href={websiteLink}>
-                            <CapButton> Visit Website </CapButton>
-                        </a>
-                        <MobileMarker>
-                            <FontAwesomeIcon size='2x' icon={['fal', 'mobile-alt']} />
-                            <h6 style={{
-                                marginTop: 2
-                            }}>Mobile Friendly</h6>
-                        </MobileMarker>
-                    </Info>
-                </Menu>
+            <HeaderImg src={prevIndex != currentIndex ? projects[prevIndex].headerImg : headerImg}>
+                { projects.map((proj, i) => i === prevIndex ? <ProjectMenu 
+                 key={proj.title + i.toString()}
+                {...proj}
+                firstTime={firstVisit}
+                old={true}
+                duration={duration} 
+                menuShow={false}/> : null) }
+                { !firstVisit ? projects.map((proj, i) => i === currentIndex ? 
+                <ProjectMenu 
+                    firstVisit={currentIndex === 0}
+                    key={title + i.toString()}
+                    duration={duration}
+                    tagline={tagline}
+                    title={title}
+                    type={type}
+                    websiteLink={websiteLink}
+                    primaryColor={theme[3]}
+                    isMobileFriendly={isMobileFriendly}
+                    old={false}
+                    menuShow={true}
+                     /> : null) : null}
             </HeaderImg>
         </ProjectContainer>
     );

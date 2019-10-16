@@ -9,6 +9,14 @@ export const fadeOut = keyframes`
   }
 `;
 
+export const nothing = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 export const fadeIn = keyframes`
   0% {
       opacity: 0;
@@ -20,7 +28,14 @@ export const fadeIn = keyframes`
   }
 `;
 
-export const openShow = keyframes ``;
+export const simpleFadeIn = keyframes`
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+`;
 
 export const linearReg = keyframes`
   0% {

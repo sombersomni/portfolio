@@ -9,7 +9,8 @@ export default [
         tagline: "A movie website built using MovieDB API",
         title: "Pick Flicks",
         type: ["Website", "App"],
-        websiteLink: "https://pick-flicks-app.herokuapp.com/"
+        websiteLink: "https://pick-flicks-app.herokuapp.com/",
+        isMobileFriendly: true
     },
     {
         headerImg: weather_report_header,
@@ -17,7 +18,8 @@ export default [
         tagline: "A weather app that gives you weekly forecast",
         title: "Weather Report",
         type: "App",
-        websiteLink: "https://weather-report-demo.herokuapp.com/"
+        websiteLink: "https://weather-report-demo.herokuapp.com/",
+        isMobileFriendly: true
     },
     {
         headerImg: encage_header,
@@ -26,7 +28,8 @@ export default [
         title: "Encage",
         type: "NPM Module",
         websiteLink: "https://www.npmjs.com/package/encage",
-        bgpos: "left"
+        bgpos: "left",
+        isMobileFriendly: true
     },
     {
         headerImg: todo_header,
@@ -34,7 +37,8 @@ export default [
         tagline: "An app for building a to do list",
         title: "Todo Demo",
         type: "App",
-        websiteLink: "https://simple-todos-hook-demo.herokuapp.com/"
+        websiteLink: "https://simple-todos-hook-demo.herokuapp.com/",
+        isMobileFriendly: true
     },
     {
         headerImg: pick_flicks_header,
@@ -42,7 +46,8 @@ export default [
         tagline: "A movie website built using MovieDB API",
         title: "Pick Flicks",
         type: "Website",
-        websiteLink: "https://pick-flicks-app.herokuapp.com/"
+        websiteLink: "https://pick-flicks-app.herokuapp.com/",
+        isMobileFriendly: true
     },
     {
         headerImg: weather_report_header,
