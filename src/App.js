@@ -11,7 +11,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown, faChevronUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode, faTimes, faServer, faDatabase, faPlus, faBrain, faChartPie } from '@fortawesome/pro-regular-svg-icons'
 import { faFilePdf, faChartScatter, faHorizontalRule, faProjectDiagram, faMobileAlt } from '@fortawesome/pro-light-svg-icons';
-import { faSortDown} from '@fortawesome/pro-duotone-svg-icons';
 import { faGithub, faVimeoV } from '@fortawesome/free-brands-svg-icons';
 
 import './App.css';

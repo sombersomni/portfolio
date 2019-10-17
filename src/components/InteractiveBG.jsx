@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react';
+import React, {  useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 //scripts

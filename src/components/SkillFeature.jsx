@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 //external scripts
@@ -80,8 +80,6 @@ const TitleContainer = styled.div`
     min-width: 200px;
 `;
 export default function SkillFeature({ title, icon, description, skillsets, theme, choice, mobile }) {
-    useEffect(() => {
-    }, [choice]);
 
     const planeInit = useCallback(node => {
         if (node !== null) {

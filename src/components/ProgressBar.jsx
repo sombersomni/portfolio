@@ -24,13 +24,13 @@ const Bar = styled.div`
     transition: height 1s;
 `;
 
-export default function ProgressBar({ currentIndex, primaryColor, projectsLength, type = "horizontal" }) {
+export default function ProgressBar({ currentIndex, primaryColor, projectsLength }) {
     const progRef = useRef(null);
     const [height, setHeight] = useState(0);
     useEffect(() => {
         const _height = progRef.current.clientHeight / projectsLength;
         setHeight(_height * (currentIndex + 1));
-    }, [currentIndex]);
+    }, [currentIndex, projectsLength]);
     return (
         <ProgressContainer
             style={{ height: '60vh' }}

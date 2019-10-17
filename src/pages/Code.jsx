@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Transition } from 'react-spring/renderprops';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { debounce, throttle } from 'lodash';
+import { debounce } from 'lodash';
 //components
 import Project from '../components/Projectv2.jsx';
 import projects from '../data/projects';

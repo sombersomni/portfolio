@@ -79,10 +79,10 @@ function BioFooter({ description, src, theme, mobile }) {
             </Bio>
             <Footer>
                 <FooterMessage>This site was made using <span style={ReactLogoStyle}>
-                    <div><p>React</p><img src={reactLogo} style={{height:50}}/></div>
-                    </span> and ☕</FooterMessage>
+                    <div><p>React</p><img src={reactLogo} style={{height:50}} alt="react logo"/></div>
+                    </span> and <span role="img" aria-label="coffee">☕</span></FooterMessage>
                 <EndFooter>
-                    <p>Somber Somni ©️ 2019</p>
+                    <p>Somber Somni <span role="img" aria-label="copyright">>©️</span> 2019</p>
                 </EndFooter>
             </Footer>
         </BioContainer>
