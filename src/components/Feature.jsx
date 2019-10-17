@@ -8,6 +8,7 @@ import ContactModal from './ContactModal.jsx';
 //other
 import socials from '../config/socials';
 import data from '../data/about';
+import pdf from '../data/resume.PDF';
 const { socialLinks, SocialContainer } = socials;
 const FeatureContainer = styled.div`
     width: 250px;
@@ -76,7 +77,7 @@ function Feature({ theme, mobile }) {
                         primaryColor={theme[1]}>
                         Hire Me
                     </FeatureButton>
-                    <a href="#">
+                    <a href={pdf} download="Xavier Palin Coder Resume">
                         <Resume>
                             <FontAwesomeIcon size='2x' icon={['fal', 'file-pdf']} />
                             <p style={{ 

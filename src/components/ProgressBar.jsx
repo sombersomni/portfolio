@@ -29,7 +29,7 @@ export default function ProgressBar({ currentIndex, primaryColor, projectsLength
     const [height, setHeight] = useState(0);
     useEffect(() => {
         const _height = progRef.current.clientHeight / projectsLength;
-        setHeight(_height * currentIndex);
+        setHeight(_height * (currentIndex + 1));
     }, [currentIndex]);
     return (
         <ProgressContainer

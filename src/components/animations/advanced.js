@@ -19,7 +19,7 @@ export const menuMove = keyframes`
         top: 100%;
     }
     75% {
-        top: -1px;
+        top: 0%;
     }
     100% {
         top: 0%;

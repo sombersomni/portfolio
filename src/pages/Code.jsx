@@ -58,7 +58,9 @@ function Code({ mobile, theme }) {
     useEffect(() => {
         const dWheel = debounce(handleWheel, duration, { maxWait: duration + 1000, leading: true, trailing: false });
         window.addEventListener('wheel', dWheel);
-        window.addEventListener('mousemove', handleMouseMove);
+        setTimeout(() => { 
+            window.addEventListener('mousemove', handleMouseMove);
+        }, 5000);
         return () => {
             window.removeEventListener('wheel', dWheel);
             window.removeEventListener('mousemove', handleMouseMove);
@@ -70,7 +72,7 @@ function Code({ mobile, theme }) {
         mouseTimeout = setTimeout(() => {
             console.log('mouse deactivate');
             setMouseActive(true);
-        }, 10000);
+        }, 5000);
 
     }
     const handleWheel = e => {
