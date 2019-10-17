@@ -37,7 +37,6 @@ function LogoSlider({ brands, mobile, screenWidth, scrollYPos, duration }) {
     // });
 
     useEffect(() => {
-        console.log(slideRef.current.offsetTop, scrollYPos);
         if (slideRef.current.offsetTop - 400 <= scrollYPos && scrollYPos !== 0) {
             setElReached(true);
         }
