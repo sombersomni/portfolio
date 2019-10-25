@@ -106,6 +106,7 @@ export default function ProjectMenu({ headerImg, primaryColor, tagline, websiteL
                     primaryColor={color /*replicates theme[3] */}>
                     <h1 style={{
                         fontFamily: "Beth Ellen",
+                        fontSize: mobile ? "1.2em" : "2em",
                         marginBottom: -10
                     }}>{title}</h1>
                     <p style={{ padding: "0px 25px" }}>{tagline}</p>
@@ -132,7 +133,7 @@ export default function ProjectMenu({ headerImg, primaryColor, tagline, websiteL
                     <a href={websiteLink}>
                         <CapButton> Visit Website </CapButton>
                     </a>
-                    {isMobileFriendly ? <MobileMarker>
+                    { !mobile && isMobileFriendly ? <MobileMarker>
                         <FontAwesomeIcon size='2x' icon={['fal', 'mobile-alt']} />
                         <h6 style={{
                             marginTop: 2

@@ -34,8 +34,7 @@ const AboutContainer = styled.div`
     align-items: flex-start;
     min-height: 500px;
     height: auto;
-
-    min-width: 350px;
+    min-width: 250px;
     width: 90vw;
     background: ${props => props.primaryColor || 'black'};
     box-shadow: 4px 4px 8px ${props => props.primaryColor || 'black'}
@@ -49,18 +48,19 @@ const Info = styled.div`
     opacity: 0;
     height: inherit;
     color: white;
-    padding: 10px 40px;
-    width: ${props => props.mobile ? '85%' : '60%'};
+    width: ${props => props.mobile ? '100%' : '60%'};
     animation: ${props => props.time || 1000}ms ${props => props.delay || 1000}ms ${fadeIn} ease-out both;
     h1 {
         color: ${props => props.secondaryColor || "white"};
+        margin-bottom: 0;
     }
     p {
+        padding: 10px 25px 25px 25px;
         text-align: justify;
-        text-indent: 1em;
         &:first-letter {
             color: ${props => props.secondaryColor || "yellow"};
             font-size: 2rem;
+            text-indent: 1em;
         }
     }
 `;
@@ -83,6 +83,8 @@ const Pic = styled.div`
 const Contact = styled.div`
     a {
         color: ${props => props.secondaryColor || "white"};
+        font-size: 0.8em;
+        font-style: italics;
     }
 `;
 
@@ -109,9 +111,9 @@ function About({ theme, screenWidth }) {
                     <h1>Somber Somni</h1>
                     <p>{bio}</p>
                     <Contact secondaryColor={theme[5]}>
-                        <div style={{fontSize: "1.5em"}}>For serious inqueries, email me at : <a href={`mailto:${email}?subject=${subject}`}>
+                        <p style={{fontSize: "1.5em", textAlign: "center"}}>For serious inqueries, email me at : <a href={`mailto:${email}?subject=${subject}`}>
                             {email}</a> or <a href={`mailto:${altEmail}?subject=${subject}`}>
-                            {altEmail}</a></div>
+                            {altEmail}</a></p>
                     </Contact>
                 </Info>
             </AboutContainer>

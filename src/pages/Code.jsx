@@ -148,7 +148,7 @@ function Code({ mobile, theme }) {
                 duration={duration}
                 firstVisit={firstVisit}
                 mobile={mobile} />
-            <Transition
+            {!mobile ? <Transition
                 items={mouseActive}
                 from={{ opacity: 0, bottom: 30 }}
                 enter={{ opacity: 1, bottom: 60 }}
@@ -164,7 +164,7 @@ function Code({ mobile, theme }) {
                             color: 'white'
                         }} />
                 </ScrollMessage>)}
-            </Transition>
+                    </Transition> : null }
             <ProgressBar
                 currentIndex={currentIndex}
                 projectsLength={projects.length}
