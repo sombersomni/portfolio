@@ -20,7 +20,7 @@ const FeatureContainer = styled.div`
     color: ${props => props.mobile ?  props.primaryColor : 'white'};
     background: ${props => props.mobile ? 'white': 'transparent'};
     top: 50%;
-    left: ${props => props.mobile ? '50%': '50px'};
+    left: ${props => props.mobile ? '50%': '15%'};
     margin-top: 50px;
     transform: ${props => props.mobile ? 'translate(-50%,-50%)' : 'translateY(-50%)'};
     z-index: 10;

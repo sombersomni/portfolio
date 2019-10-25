@@ -18,8 +18,10 @@ function InteractiveBG({ screenWidth, mobile }) {
             
             console.log(screenWidth);
             startEnvironment(canvasRef.current, 0x4D587A, mobile);
+        } else { 
+            setTimeout(() => setRestart(false), 200);
         }
-        setTimeout(() => setRestart(false), 200);
+        
     }, [screenWidth, restart])
     return (
         <Container>
