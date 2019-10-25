@@ -41,6 +41,9 @@ const AboutContainer = styled.div`
     box-shadow: 4px 4px 8px ${props => props.primaryColor || 'black'}
     border-radius: 0px 0px 25px 0px;
     animation: ${props => props.time || 1000}ms ${expand} cubic-bezier(0.215, 0.61, 0.355, 1) both;
+    h4 {
+        font-family: "Staatliches", monospace;
+    }
 `;
 const Info = styled.div`
     opacity: 0;
@@ -104,12 +107,11 @@ function About({ theme, screenWidth }) {
                     secondaryColor={theme[5]}
                     mobile={screenWidth <= 800}>
                     <h1>Somber Somni</h1>
-                    <h4>Xavier Palin</h4>
                     <p>{bio}</p>
                     <Contact secondaryColor={theme[5]}>
-                        <h4>For serious inqueries, email me at : <a href={`mailto:${email}?subject=${subject}`}>
+                        <div style={{fontSize: "1.5em"}}>For serious inqueries, email me at : <a href={`mailto:${email}?subject=${subject}`}>
                             {email}</a> or <a href={`mailto:${altEmail}?subject=${subject}`}>
-                            {altEmail}</a></h4>
+                            {altEmail}</a></div>
                     </Contact>
                 </Info>
             </AboutContainer>

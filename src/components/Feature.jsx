@@ -11,17 +11,18 @@ import data from '../data/about';
 import pdf from '../data/resume.PDF';
 const { socialLinks, SocialContainer } = socials;
 const FeatureContainer = styled.div`
-    width: 250px;
-    padding: 25px;
+    min-width: 200px;
+    max-width: 250px;
+    padding: 20px;
     position: absolute;
-    background: rgba(70, 80, 125,0.4);
     border: 2px solid white;
     border-radius: 10%;
-    color: white;
+    color: ${props => props.mobile ?  props.primaryColor : 'white'};
+    background: ${props => props.mobile ? 'white': 'transparent'};
     top: 50%;
-    left: 50%;
+    left: ${props => props.mobile ? '50%': '50px'};
     margin-top: 50px;
-    transform: translate(-50%,-50%);
+    transform: ${props => props.mobile ? 'translate(-50%,-50%)' : 'translateY(-50%)'};
     z-index: 10;
 `;
 
@@ -34,6 +35,9 @@ const FeatureButton = styled.a`
     &:hover {
         box-shadow: 0px 0px 1px 1px rgba(70, 80, 125,0.2);
     }
+    h1, h2 {
+        color : ${props => props.mobile ? props.primaryColor : 'white'}
+    }
 `;
 
 const Resume = styled.div`
@@ -42,7 +46,7 @@ const Resume = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: ${props => props.mobile ? props.primaryColor : 'white'}
     transition: opacity 1s;
     opacity: 1;
     &:hover {
@@ -62,23 +66,23 @@ const { email, subject } = data;
 function Feature({ theme, mobile }) {
     const [open, setOpen] = useState(false);
     return (
-        <FeatureContainer primaryColor={theme[3]}>
+        <FeatureContainer primaryColor={theme[6]} mobile={mobile}>
             <ContactModal theme={theme} mobile={mobile} setOpen={setOpen} open={open} />
             <div>
-                <h3>
-                    SOMBER
+                <h2>
+                    {"SOMNI"}
                     <br />
-                    SOMNI
-                </h3>
-                <p>A self taught programmer, artist and mathematician</p>
+                    {"DESIGNS"}
+                </h2>
+                <p>A self taught programmer, artist and mathematician providing creatively fresh solutions across multiple tech fields</p>
                 <ButtonContainer>
                     <FeatureButton
                         href={`mailto:${email}?subject=${subject}`}
                         primaryColor={theme[1]}>
                         Hire Me
-                    </FeatureButton>
+                    </FeatureButton >
                     <a href={pdf} download="Xavier Palin Coder Resume">
-                        <Resume>
+                        <Resume primaryColor={theme[6]} mobile={mobile}>
                             <FontAwesomeIcon size='2x' icon={['fal', 'file-pdf']} />
                             <p style={{ 
                                 fontSize: '0.8em'}}>Download Resume PDF</p>

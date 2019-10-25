@@ -1,4 +1,4 @@
-import React, {  useEffect, useRef } from 'react';
+import React, {  useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 //scripts
@@ -10,27 +10,29 @@ const Container = styled.div`
     background: #4D587A;
 `;
 
-function InteractiveBG({ screenWidth }) {
+function InteractiveBG({ screenWidth, mobile }) {
     const canvasRef = useRef(null);
-
+    const [restart, setRestart] = useState(true);
     useEffect(() => {
-        if (canvasRef) {
-            console.log(canvasRef.current.innerWidth, canvasRef.innerHeight);
-            startEnvironment(canvasRef.current, 0x4D587A);
+        if (canvasRef && screenWidth && !restart) {
+            
+            console.log(screenWidth);
+            startEnvironment(canvasRef.current, 0x4D587A, mobile);
         }
-    }, [screenWidth])
+        setTimeout(() => setRestart(false), 200);
+    }, [screenWidth, restart])
     return (
         <Container>
             <canvas
                 ref={canvasRef}
                 style={{ zIndex: 1 }}
                 height={800}
-                width={screenWidth < 1280 ? screenWidth : 1500} />
+                width={screenWidth} />
         </Container>
     )
 }
 
-function mapStateToProps({ screenWidth }) {
-    return { screenWidth }
+function mapStateToProps({ screenWidth, mobile }) {
+    return { screenWidth, mobile }
 }
 export default connect(mapStateToProps)(InteractiveBG);

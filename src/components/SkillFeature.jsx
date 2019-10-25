@@ -20,6 +20,9 @@ const SkillFeatureContainer = styled.div`
         color: ${props => props.primaryColor};
     }
     padding-bottom: 50px;
+    h5 {
+        font-family: "Staatliches", monospace;
+    }
 `;
 
 const Description = styled.p`

@@ -275,7 +275,7 @@ function canvasResize(camera, canvas) {
     camera.bottom = frustrum * -canvas.innerHeigt / 2;
     camera.updateProjectionMatrix();
 }
-export default function startEnvironment(canvas, bgColor) {
+export default function startEnvironment(canvas, bgColor, mobile) {
     console.log("inside env", canvas);
     let scene = new THREE.Scene();
     scene.background = new THREE.Color( bgColor );
@@ -340,7 +340,11 @@ export default function startEnvironment(canvas, bgColor) {
     const lamp = createLamp(0xFFB6C1, bgColor);
     livingRoom.add(lamp);
     livingRoom.rotation.y -= Math.PI * 2 / 8;
-    livingRoom.position.set(-25, 10, -100);
+    if(mobile) {
+        livingRoom.position.set(-25, 10, -100);
+    } else {
+        livingRoom.position.set(125, 10, -100);
+    }
     scene.add(livingRoom);
     camera.lookAt(new THREE.Vector3(0, 100, 0));
     anime({
