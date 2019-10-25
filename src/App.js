@@ -7,14 +7,16 @@ import Home from './pages/Home.jsx';
 import Code from './pages/Code.jsx';
 import About from './pages/About.jsx';
 import MainNav from './components/MainNav.jsx';
+import NoPage from './pages/NoPage.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown, faChevronUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
-import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode, faTimes, faServer, faDatabase, faPlus, faBrain, faChartPie } from '@fortawesome/pro-regular-svg-icons'
+import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode, faTimes, faServer, faDatabase, faPlus, faBrain, faChartPie, faExclamationTriangle } from '@fortawesome/pro-regular-svg-icons'
 import { faFilePdf, faChartScatter, faHorizontalRule, faProjectDiagram, faMobileAlt } from '@fortawesome/pro-light-svg-icons';
 import { faGithub, faVimeoV } from '@fortawesome/free-brands-svg-icons';
 
 import './App.css';
 library.add(
+  faExclamationTriangle,
   faCaretDown,
   faMobileAlt,
   faChevronDown,
@@ -55,6 +57,7 @@ function App({dResizeTracker, tScrollTracker}) {
           <Route exact path='/' component={Home} />
           <Route exact path='/code' component={Code} />
           <Route exact path='/about' component={About} />
+          <Route path='/' component={NoPage} />
         </Switch>
       </Router>
     </div>
