@@ -7,7 +7,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reducer from './reducer'
 const initialState = {
-    theme: ['#FFF7AE', '#FF9922', '#D81159', '#1B1B3A', '#F7F7FF', '#D9F0FF'],
+    theme: ['#FFF7AE', '#FF9922', '#D81159', '#1B1B3A', '#F7F7FF', '#D9F0FF',  '#4D587A'],
     mobile: false,
     screenWidth: 1920,
     scrollYPos: 0

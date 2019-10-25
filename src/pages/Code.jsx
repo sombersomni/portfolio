@@ -8,7 +8,6 @@ import { debounce } from 'lodash';
 import Project from '../components/Projectv2.jsx';
 import projects from '../data/projects';
 import ProgressBar from '../components/ProgressBar.jsx';
-//import DropSelect from '../components/DropSelect.jsx';
 
 
 const MainContainer = styled.div`
@@ -18,20 +17,20 @@ const MainContainer = styled.div`
     }
 `;
 
-// const IconContainer = styled.div`
-//     position: absolute;
-//     ${props => props.up ? "top: 100px" : "bottom: 50px"  };
-//     left: 50%;
-//     transform: translateX(-50%), scale(1);
-//     z-index: 95;
-//     color: white;
-//     opacity: 1;
-//     cursor: pointer;
-//     &:hover {
-//         transform: scale(1.1);
-//         opacity: 0.8;
-//     }
-// `;
+const IconContainer = styled.div`
+    position: absolute;
+    ${props => props.up ? "top: 100px" : "bottom: 50px"};
+    left: 50%;
+    transform: translateX(-50%), scale(1);
+    z-index: 95;
+    color: white;
+    opacity: 1;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+`;
 
 const ScrollMessage = styled.div`
     position: absolute;
@@ -39,14 +38,15 @@ const ScrollMessage = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 100px;
     z-index: 95;
     cursor: pointer;
     background: white;
     border-radius: 25px;
     padding: 0px 10px;
     width: 100px;
+    font-size: .8em;
+    font-weight: bold;
 `;
 
 function Code({ mobile, theme }) {
@@ -58,7 +58,7 @@ function Code({ mobile, theme }) {
     useEffect(() => {
         const dWheel = debounce(handleWheel, duration, { maxWait: duration + 1000, leading: true, trailing: false });
         window.addEventListener('wheel', dWheel);
-        setTimeout(() => { 
+        setTimeout(() => {
             window.addEventListener('mousemove', handleMouseMove);
         }, 5000);
         return () => {
@@ -75,43 +75,70 @@ function Code({ mobile, theme }) {
         }, 5000);
 
     }
+    function handleClickUp() {
+        clearTimeout(mouseTimeout);
+        setMouseActive(false);
+        mouseTimeout = setTimeout(() => {
+            console.log('mouse deactivate');
+            setMouseActive(true);
+        }, 5000);
+        setProjectState(prevState => ({
+            currentIndex: prevState.currentIndex >= 1 ? prevState.currentIndex - 1 : 0,
+            prevIndex: prevState.currentIndex
+        }));
+    }
+    function handleClickDown() {
+        if (firstVisit) {
+            setFirstVisit(false);
+        }
+        clearTimeout(mouseTimeout);
+        setMouseActive(false);
+        mouseTimeout = setTimeout(() => {
+            console.log('mouse deactivate');
+            setMouseActive(true);
+        }, 5000);
+        setProjectState(prevState => ({
+            currentIndex: prevState.currentIndex < projects.length - 1 ? prevState.currentIndex + 1 : projects.length - 1,
+            prevIndex: prevState.currentIndex
+        }));
+    }
     const handleWheel = e => {
         if (firstVisit) {
             setFirstVisit(false);
         }
         if (e.deltaY > 0) {
-            setProjectState(prevState => ({ 
-                currentIndex : prevState.currentIndex < projects.length - 1 ? prevState.currentIndex + 1 : projects.length - 1,
+            setProjectState(prevState => ({
+                currentIndex: prevState.currentIndex < projects.length - 1 ? prevState.currentIndex + 1 : projects.length - 1,
                 prevIndex: prevState.currentIndex
             }));
         } else if (e.deltaY < 0) {
-            setProjectState(prevState => ({ 
-                currentIndex : prevState.currentIndex >= 1 ? prevState.currentIndex - 1 : 0,
+            setProjectState(prevState => ({
+                currentIndex: prevState.currentIndex >= 1 ? prevState.currentIndex - 1 : 0,
                 prevIndex: prevState.currentIndex
             }));
         }
     }
-    const {currentIndex, prevIndex} = projectState;
+    const { currentIndex, prevIndex } = projectState;
     return (
         <MainContainer>
-            {/* {currentIndex >= 1 ? (
+            {currentIndex >= 1 ? (
                 <IconContainer up={true}>
                     <FontAwesomeIcon
-                        onClick={e => setCurrentIndex(prevIndex => prevIndex >= 1 ? prevIndex - 1 : 0)}
+                        onClick={handleClickUp}
                         size="2x"
-                        icon={['fas', 'chevron-up']}
+                        icon={['fas', 'caret-up']}
                     />
                 </IconContainer>
             ) : null}
-            {currentIndex <= projects.length - 1 ? (
+            {currentIndex < projects.length - 1 ? (
                 <IconContainer up={false}>
                     <FontAwesomeIcon
-                        onClick={e => setCurrentIndex(prevIndex => prevIndex < projects.length - 1 ? prevIndex + 1 : projects.length - 1)}
+                        onClick={handleClickDown}
                         size="2x"
-                        icon={['fas', 'chevron-down']}
+                        icon={['fas', 'caret-down']}
                     />
                 </IconContainer>
-            ) : null} */}
+            ) : null}
             <Project
                 {...projects[currentIndex]}
                 prevIndex={prevIndex}
@@ -127,13 +154,13 @@ function Code({ mobile, theme }) {
                 enter={{ opacity: 1, bottom: 60 }}
                 leave={{ opacity: 0, bottom: 30 }}>
                 {mouseActive => mouseActive && (props => <ScrollMessage style={{ ...props }}>
-                    <p>Scroll to view Projects</p>
+                    <p>Scroll or click arrow to view Projects</p>
                     <FontAwesomeIcon
                         size="2x"
                         icon={['fas', 'caret-down']}
                         style={{
                             position: 'absolute',
-                            bottom: -18,
+                            bottom: -15,
                             color: 'white'
                         }} />
                 </ScrollMessage>)}

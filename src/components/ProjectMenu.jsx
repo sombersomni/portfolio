@@ -87,7 +87,7 @@ const HeaderImg = styled.div`
     height:  100%;
     z-index: ${props => props.old ? 10 : 11};
 `;
-export default function ProjectMenu({ headerImg, primaryColor, tagline, websiteLink, type, title, isMobileFriendly, old = false, menuShow = true, duration, firstTime, mobile }) {
+export default function ProjectMenu({ headerImg, primaryColor, tagline, websiteLink, type, theme, title, isMobileFriendly, old = false, menuShow = true, duration, firstTime, mobile }) {
     const color = "27,27,58";
     return (
         <MainContainer
@@ -115,6 +115,7 @@ export default function ProjectMenu({ headerImg, primaryColor, tagline, websiteL
                                 <Capsule
                                     color='white'
                                     i={i}
+                                    theme={theme}
                                     show={true}
                                     label={each} />
                             </CapsuleContainer>)) :
@@ -122,6 +123,7 @@ export default function ProjectMenu({ headerImg, primaryColor, tagline, websiteL
                                 <Capsule
                                     i={0}
                                     color='white'
+                                    theme={theme}
                                     show={true}
                                     label={type} />
                             </CapsuleContainer>

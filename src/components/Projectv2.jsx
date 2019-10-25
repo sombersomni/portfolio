@@ -28,6 +28,7 @@ export default function Project({ currentIndex, duration, headerImg, firstVisit,
                 mobile={mobile}
                 {...proj}
                 firstTime={firstVisit}
+                theme={theme}
                 old={true}
                 duration={duration}
                 menuShow={false} /> : null)}
@@ -38,6 +39,7 @@ export default function Project({ currentIndex, duration, headerImg, firstVisit,
                     duration={duration}
                     headerImg={headerImg}
                     tagline={tagline}
+                    theme={theme}
                     title={title}
                     type={type}
                     websiteLink={websiteLink}

@@ -1,20 +1,19 @@
 const {src, dest} = require('gulp');
-imagemin = require('gulp-imagemin'),
-fs = require('fs'),
-path = require('path');
-imagemin = require('gulp-imagemin'),
+const imagemin = require('gulp-imagemin');
+const fs = require('fs');
+const path = require('path');
 //imageminWebp = require('imagemin-webp'),
-imageminJpegtran = require('imagemin-jpegtran'),
-imageminPngquant = require('imagemin-pngquant'),
+const imageminJpegtran = require('imagemin-jpegtran');
+const imageminPngquant = require('imagemin-pngquant');
 // //imageminGifSicle = require('imagemin-gifsicle'),
-imageminOptiPng = require('imagemin-optipng'),
+
 function main() {
     console.log("task is live")
     return;
 }
 
 function compress() {
-    return src('src/imgs/**/*.{jpg|png}')
+    return src('src/imgs/**')
     .pipe(imagemin([ 
         imagemin.jpegtran(),
         imagemin.optipng(),
@@ -25,3 +24,4 @@ function compress() {
 }
 
 exports.compress = compress;
+exports.default = main;

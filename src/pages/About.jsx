@@ -13,7 +13,7 @@ const expand = keyframes`
         width: 0;
     }
     100% {
-        width: 75vw;
+        width: 90vw;
     }
 `;
 
@@ -23,28 +23,31 @@ const Container = styled.div`
     align-items: center;
     justify-content: flex-start;
     background: ${props => props.secondaryColor || 'yellow'};
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
 `;
 const AboutContainer = styled.div`
     margin-top: 100px;
     display: flex;
-    flex-direction: row;
+    flex-direction: ${props => props.mobile ? 'column': 'row'};
     jusity-content: center;
-    align-items: center;
-    height: 500px;
-    min-width: 600px;
+    align-items: flex-start;
+    min-height: 500px;
+    height: auto;
+
+    min-width: 350px;
+    width: 90vw;
     background: ${props => props.primaryColor || 'black'};
     box-shadow: 4px 4px 8px ${props => props.primaryColor || 'black'}
     border-radius: 0px 0px 25px 0px;
     animation: ${props => props.time || 1000}ms ${expand} cubic-bezier(0.215, 0.61, 0.355, 1) both;
-    overflow: hidden;
 `;
 const Info = styled.div`
     opacity: 0;
     height: inherit;
     color: white;
-    padding: 20px 50px;
+    padding: 10px 40px;
+    width: ${props => props.mobile ? '85%' : '60%'};
     animation: ${props => props.time || 1000}ms ${props => props.delay || 1000}ms ${fadeIn} ease-out both;
     h1 {
         color: ${props => props.secondaryColor || "white"};
@@ -59,23 +62,22 @@ const Info = styled.div`
     }
 `;
 const Profile = styled.div`
-    width: 40%;
-    min-width: 300px;
-    height: inherit;
-    background: black;
+    width: ${props => props.mobile ? "100%" : "40%"};
+    max-width: 90vw;
+    min-height: 500px;
+    height: ${props => props.mobile ? "600px" : "100vh"}
 `;
 
 const Pic = styled.div`
     background: url(${props => props.pic}) no-repeat;
     background-size: cover;
+    background-position-x: center;
     width: 100%;
     height: 100%;
-    z-index: 1;
     animation: ${props => props.time || 1000}ms ${fadeIn} ease-out both;
 `;
 
 const Contact = styled.div`
-    padding: 10px 50px;
     a {
         color: ${props => props.secondaryColor || "white"};
     }
@@ -83,12 +85,15 @@ const Contact = styled.div`
 
 const { bio, altEmail, email, subject } = data;
 
-function About({ theme, mobile }) {
+function About({ theme, screenWidth }) {
     const expandTime = 1000;
     return (
         <Container secondaryColor={theme[5]}>
-            <AboutContainer primaryColor={theme[3]} time={expandTime}>
-                <Profile>
+            <AboutContainer
+             primaryColor={theme[3]} 
+             time={expandTime}
+             mobile={screenWidth <= 800}>
+                <Profile mobile={screenWidth <= 800}>
                     <Pic 
                         pic={me} 
                         time={1000} />
@@ -96,7 +101,8 @@ function About({ theme, mobile }) {
                 <Info 
                     delay={expandTime} 
                     time={1000}
-                    secondaryColor={theme[5]}>
+                    secondaryColor={theme[5]}
+                    mobile={screenWidth <= 800}>
                     <h1>Somber Somni</h1>
                     <h4>Xavier Palin</h4>
                     <p>{bio}</p>
@@ -111,10 +117,10 @@ function About({ theme, mobile }) {
     )
 }
 
-function mapStateToProps({ theme, mobile }) {
+function mapStateToProps({ theme, mobile, screenWidth }) {
     return {
         theme,
-        mobile
+        screenWidth
     }
 }
 export default connect(mapStateToProps)(About)

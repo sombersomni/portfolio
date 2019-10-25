@@ -17,7 +17,7 @@ const SkillFeatureContainer = styled.div`
     align-items: center;
     animation: ${props => props.time || 1000}ms ${fadeIn} ease-out both;
     h1 {
-        color: yellow;
+        color: ${props => props.primaryColor};
     }
     padding-bottom: 50px;
 `;
@@ -28,7 +28,7 @@ const Description = styled.p`
     text-indent: 1em;
     &:first-letter {
         font-size: 2em;
-        color: yellow;
+        color: ${props => props.secondaryColor};
     }
 `;
 
@@ -83,7 +83,7 @@ export default function SkillFeature({ title, icon, description, skillsets, them
 
     const planeInit = useCallback(node => {
         if (node !== null) {
-            startPlane(node, theme[1]);
+            startPlane(node, theme['white']);
         }
     })
     function createIcons(name, icons) {
@@ -136,15 +136,15 @@ export default function SkillFeature({ title, icon, description, skillsets, them
         <SkillFeatureContainer
             time={1000}
             mobile={mobile}>
-            <TitleContainer mobile={mobile}>
+            <TitleContainer mobile={mobile} primaryColor={theme[5]}>
                 <h1>{title}</h1>
                 {createIcons(title, icon)}
                 <SkillSets>
-                    {skillsets.map((skill, i) => <Capsule key={skill} label={skill} i={i} show={true} />)}
+                    {skillsets.map((skill, i) => <Capsule key={skill} theme={theme} label={skill} i={i} show={true} />)}
                 </SkillSets>
             </TitleContainer>
             <DescContainer mobile={mobile}>
-                <Description time={2000}>{description}</Description>
+                <Description secondaryColor={theme[5]} time={2000}>{description}</Description>
             </DescContainer>
         </SkillFeatureContainer>
     )

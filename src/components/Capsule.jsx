@@ -20,17 +20,19 @@ text-transform: capitalize;
 `;
 const DefaultContainer = styled.div`
     ${defaultStyle}
-    background: ${props => props.color || "yellow"};
+    background: ${props => props.color || props.primaryColor};
     font-size: 0.8em;
     animation: 1s ${fadeIn} ${props => props.i * 100}ms ease-out both;
 `;
 
 const CapsuleContainer = styled.div`
     ${defaultStyle}
-    background: ${props => props.selected ? props.primaryColor : 'yellow'};
+    background: ${props => props.selected ? props.secondColor : props.primaryColor};
+    color: ${props => props.selected ? props.ternaryColor : 'white'};
     cursor: pointer;
     &:hover {
         background: ${props => props.secondColor};
+        color: ${props => props.ternaryColor};
     }
 `;
 
@@ -46,12 +48,14 @@ export default function Capsule({ color, label, show, setChoice, selected, theme
             {show ? 
                 <DefaultContainer 
                 i={i}
-                color={color}> {label} 
+                color={color}
+                primaryColor={theme[5]}> {label} 
                 </DefaultContainer> :
                 <CapsuleContainer
                     selected={selected}
-                    primaryColor={theme[0]}
-                    secondColor={theme[4]}
+                    primaryColor={theme[6]}
+                    secondColor={theme[5]}
+                    ternaryColor={theme[3]}
                     onClick={setChoice}>
                     {label}
                 </CapsuleContainer>}
