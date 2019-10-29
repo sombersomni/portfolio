@@ -15,7 +15,7 @@ module.exports = [
         description: `Information is what drives and shapes your frontend. As a backend developer, controlling the flow of
         information is the backbone of any great website. For servers, I typically use Nodejs to keep all my javascript
         code uniform, but I frequently switch between different languages depending on the complexity of the server. For databases, 
-        I currently stick with no sql to avoid the tangled with of working with relational tables, but for legacy projects
+        I currently stick with no sql to avoid the tangled mess that comes with relational tables, but for legacy projects
         I revert back to SQL as it still is a solid langauge for handling large data sets.`,
         skillsets: ['NodeJS', 'Express', 'MongoDB', 'SQL', 'PostgreSQL', 'Python (flask, django)', 'GraphQL', 'ASP.NET', 'Apache Kafka']
 
