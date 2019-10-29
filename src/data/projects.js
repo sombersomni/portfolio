@@ -15,7 +15,7 @@ export default [
     {
         headerImg: weather_report_header,
         desc: "Duis eu convallis leo. Etiam varius vehicula augue ut viverra. Ut placerat orci vel commodo pellentesque. Pellentesque maximus malesuada lacus non venenatis. Vivamus eleifend cursus dui, eu rutrum nibh tempus non. Quisque at nisi rhoncus, pellentesque lacus vel, pretium turpis. Nunc vitae placerat leo.",
-        tagline: "A weather app that gives you weekly forecast",
+        tagline: "A weather app that gives you a weekly forecast",
         title: "Weather Report",
         type: "App",
         websiteLink: "https://weather-report-demo.herokuapp.com/",
