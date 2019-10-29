@@ -10,6 +10,7 @@ const ProjectContainer = styled.div`
 `;
 
 const Counter = styled.div`
+    font-size: ${props => props.mobile ? 0.6 : 1}em;
     position: absolute;
     top: 100px;
     left: 25px;
@@ -20,7 +21,7 @@ const Counter = styled.div`
 export default function Project({ currentIndex, duration, headerImg, firstVisit, tagline, title, theme, type, websiteLink, isMobileFriendly, prevIndex, projects, mobile }) {
     return (
         <ProjectContainer>
-            <Counter>
+            <Counter mobile={mobile}>
                 <h1>{currentIndex + 1}.</h1>
             </Counter>
             {projects.map((proj, i) => i === prevIndex ? <ProjectMenu

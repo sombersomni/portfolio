@@ -10,12 +10,13 @@ import MainNav from './components/MainNav.jsx';
 import NoPage from './pages/NoPage.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown, faChevronUp, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
-import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode, faTimes, faServer, faDatabase, faPlus, faBrain, faChartPie, faExclamationTriangle } from '@fortawesome/pro-regular-svg-icons'
-import { faFilePdf, faChartScatter, faHorizontalRule, faProjectDiagram, faMobileAlt } from '@fortawesome/pro-light-svg-icons';
+import { faBracketsCurly, faPencilAlt, faEnvelope, faHomeAlt, faLaptopCode, faTimes, faServer, faDatabase, faPlus, faBrain, faChartPie, faExclamationTriangle} from '@fortawesome/pro-regular-svg-icons'
+import { faFilePdf, faChartScatter, faHorizontalRule, faProjectDiagram, faMobileAlt, faEnvelopeOpenText  } from '@fortawesome/pro-light-svg-icons';
 import { faGithub, faVimeoV } from '@fortawesome/free-brands-svg-icons';
 
 import './App.css';
 library.add(
+  faEnvelopeOpenText,
   faCaretUp,
   faExclamationTriangle,
   faCaretDown,

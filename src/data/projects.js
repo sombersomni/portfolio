@@ -28,8 +28,6 @@ export default [
         title: "Encage",
         type: "NPM Module",
         websiteLink: "https://www.npmjs.com/package/encage",
-        bgpos: "left",
-        isMobileFriendly: true
     },
     {
         headerImg: todo_header,

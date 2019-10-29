@@ -7,6 +7,7 @@ import me from '../imgs/personal/me.png';
 import { fadeIn } from '../components/animations/basic';
 //data
 import data from '../data/about';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const expand = keyframes`
     0% {
@@ -45,6 +46,10 @@ const AboutContainer = styled.div`
     }
 `;
 const Info = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     height: inherit;
     color: white;
@@ -53,6 +58,7 @@ const Info = styled.div`
     h1 {
         color: ${props => props.secondaryColor || "white"};
         margin-bottom: 0;
+        line-height: 1;
     }
     p {
         padding: 10px 25px 25px 25px;
@@ -81,24 +87,48 @@ const Pic = styled.div`
 `;
 
 const Contact = styled.div`
+    display: flex;
+    flex-direction: ${props => props.mobile ? "column" : "row"};
+    justify-content: center;
+    align-items: center;
+    width: 80%;
     a {
         color: ${props => props.secondaryColor || "white"};
         font-size: 0.8em;
         font-style: italics;
     }
+    p {
+        &:first-letter {
+            color: white;
+            font-size: 1.2em;
+        }
+    }
+`;
+
+const FontTitle = styled.span`
+    font-size: ${props => props.size || 2}em;
+    margin: 0px;
+`;
+
+const HeaderLine = styled.div`
+    border-bottom: 2px solid white;
+    width: 50%;
+    height: 25px;
+
 `;
 
 const { bio, altEmail, email, subject } = data;
 
 function About({ theme, screenWidth }) {
     const expandTime = 1000;
+    const mobile = screenWidth <= 800;
     return (
         <Container secondaryColor={theme[5]}>
             <AboutContainer
              primaryColor={theme[3]} 
              time={expandTime}
              mobile={screenWidth <= 800}>
-                <Profile mobile={screenWidth <= 800}>
+                <Profile mobile={mobile}>
                     <Pic 
                         pic={me} 
                         time={1000} />
@@ -107,12 +137,25 @@ function About({ theme, screenWidth }) {
                     delay={expandTime} 
                     time={1000}
                     secondaryColor={theme[5]}
-                    mobile={screenWidth <= 800}>
-                    <h1>Somber Somni</h1>
+                    mobile={mobile}>
+                    <h1>
+                        <FontTitle size={mobile ? 1: 2}>Somber </FontTitle>
+                        <br/>
+                        <FontTitle size={mobile ? 1: 2}>Somni</FontTitle>
+                    </h1>
+                    <HeaderLine />
                     <p>{bio}</p>
-                    <Contact secondaryColor={theme[5]}>
-                        <p style={{fontSize: "1.5em", textAlign: "center"}}>For serious inqueries, email me at : <a href={`mailto:${email}?subject=${subject}`}>
-                            {email}</a> or <a href={`mailto:${altEmail}?subject=${subject}`}>
+                    <Contact 
+                        secondaryColor={theme[5]}
+                        mobile={mobile}>
+                        <div>
+                            <FontAwesomeIcon 
+                            icon={['fal', 'envelope-open-text']} 
+                            size={mobile ? "2x" : "6x" }
+                            style={{ color: theme[4] }}/>
+                        </div>
+                        <p style={{fontSize: mobile ? "1em" : "1.2em", textAlign: "center"}}>For serious inqueries, email me at : <a href={`mailto:${email}?subject=${subject}`}>
+                            {email}</a>  |  <a href={`mailto:${altEmail}?subject=${subject}`}>
                             {altEmail}</a></p>
                     </Contact>
                 </Info>
@@ -121,7 +164,7 @@ function About({ theme, screenWidth }) {
     )
 }
 
-function mapStateToProps({ theme, mobile, screenWidth }) {
+function mapStateToProps({ theme, screenWidth }) {
     return {
         theme,
         screenWidth
