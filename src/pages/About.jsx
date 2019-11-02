@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { connect } from 'react-redux';
 //imgs
-import me from '../imgs/personal/me.png';
+import me from '../imgs/personal/me.jpg';
 //animation
 import { fadeIn } from '../components/animations/basic';
 //data
@@ -60,7 +60,7 @@ const Info = styled.div`
         margin-bottom: 0;
         line-height: 1;
     }
-    p {
+    > p {
         padding: 10px 25px 25px 25px;
         text-align: justify;
         &:first-letter {
@@ -98,10 +98,7 @@ const Contact = styled.div`
         font-style: italics;
     }
     p {
-        &:first-letter {
-            color: white;
-            font-size: 1.2em;
-        }
+        margin: 0;
     }
 `;
 
@@ -151,12 +148,14 @@ function About({ theme, screenWidth }) {
                         <div>
                             <FontAwesomeIcon 
                             icon={['fal', 'envelope-open-text']} 
-                            size={mobile ? "2x" : "6x" }
+                            size={mobile ? "2x" : "4x" }
                             style={{ color: theme[4] }}/>
                         </div>
-                        <p style={{fontSize: mobile ? "1em" : "1.2em", textAlign: "center"}}>For serious inqueries, email me at : <a href={`mailto:${email}?subject=${subject}`}>
-                            {email}</a>  |  <a href={`mailto:${altEmail}?subject=${subject}`}>
-                            {altEmail}</a></p>
+                        <div>        
+                            <p style={{textAlign: "center"}}>For serious inqueries, email me at : <a href={`mailto:${email}?subject=${subject}`}>
+                                {email}</a>  |  <a href={`mailto:${altEmail}?subject=${subject}`}>
+                                {altEmail}</a></p>
+                        </div>
                     </Contact>
                 </Info>
             </AboutContainer>
